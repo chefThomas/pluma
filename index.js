@@ -2,8 +2,8 @@
 'use strict';
 
 const googleGeocode = 'https://maps.googleapis.com/maps/api/geocode/json?';
-const googleApiKey = 'AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA';
-const ebirdApiKey = '3k3ndtikp21v';
+const googleApiKey = '';
+const ebirdApiKey = '';
 
 
 function getEbird(latitude, longitude) {
