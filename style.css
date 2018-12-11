@@ -1,0 +1,12 @@
+h1 { 
+  font-family: 'Code_Pro_Light_Demo';
+  font-size: 3rem;
+}
+
+input, label { 
+  font-family: 'Code_Pro_Light_Demo';
+  font-size: 2rem;
+  border-radius: 0%;
+}
+
+
