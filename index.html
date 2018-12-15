@@ -7,26 +7,33 @@
   <meta http-equiv="X-UA-Compatible" content="ie=edge">
   <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
     crossorigin="anonymous"></script>
-  <script src="./scripts/jquery-ui-1.12.1.custom/jquery-ui.js"></script>
   <link rel="stylesheet" href="./styles/fonts/stylesheet.css">
-  <link rel="stylesheet" href="./styles/jquery-ui.min.css">
+  <!-- <link rel="stylesheet" href="./styles/jquery-ui.min.css"> -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
   <link rel="stylesheet" href="style.css">
   <title>pluma</title>
 </head>
 
-<body>
-  <header role="banner">
-    <h1 class="header">pluma</h1>
-  </header>
-  <section>
-    <form action="">
-      <label for="address">Address</label><br>
-      <input type="text" id="address" class="user-input">
-      <input type="submit" id="submit-button" value="submit">
-    </form>
-  </section>
+<header role="banner">
+  <h1 class="header">pluma</h1>
+  <form action="">
+    <label for="address">location</label>
+    <input type="text" id="address" class="user-input" value="Central Park, NY">
+    <label for="max-results">max results</label>
+    <input type="number" id="max-results" placeholder="all">
+    <input type="submit" id="submit-button" value="submit">
+  </form>
+</header>
 
+<body>
+  <div class="container">
+    <div class="map"></div>
+    <ul id="js-results-list" class="results-list hidden">
+    </ul>
+  </div>
   <!-- <script src="data.js"></script> -->
+  <script src="https://maps.googleapis.com/maps/api/js?key=AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA&callback=initMap" async
+    defer></script>
   <script src="index.js"></script>
 </body>
 
