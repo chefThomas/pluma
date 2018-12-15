@@ -143,3 +143,6 @@ function initMap() {
 
 $(initMap);
 $(handleSubmit);
+
+
+// Github test. This comment should only exist in branch feature/info-window
