@@ -35,15 +35,18 @@ function handleMapButtonClick(map, eBirdData) {
 
     zIndex++;
 
-    // info window 
-    //const contentString = // from ebird data. comName, howMany, locName, locationPrivate
+    const infoWindowContent = `
+      <h3><u>${eBirdData[label - 1].comName}</u><h3>
+      <p>Location: ${eBirdData[label - 1].locName}</p>
+      <p>Date: ${eBirdData[label - 1].obsDt}</li>
+      `;
 
-    // generateInfoWindowHtml(parseInt(label + 1));
+
 
 
     marker.addListener('click', function () {
       new google.maps.InfoWindow({
-        content: 'here it is'
+        content: infoWindowContent
       }).open(map, marker);
     });
   });
@@ -143,6 +146,3 @@ function initMap() {
 
 $(initMap);
 $(handleSubmit);
-
-
-// Github test. This comment should only exist in branch feature/info-window
