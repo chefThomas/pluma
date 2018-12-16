@@ -15,8 +15,6 @@ function handleMapButtonClick(map, eBirdData) {
   // listen for map button click
   $('#js-results-list').on('click', '.map-button', function (event) {
 
-    console.log('map button clicked', eBirdData);
-
     const lat = parseFloat(event.target.getAttribute("lat"));
     const lng = parseFloat(event.target.getAttribute("lng"));
 
@@ -36,13 +34,10 @@ function handleMapButtonClick(map, eBirdData) {
     zIndex++;
 
     const infoWindowContent = `
-      <h3><u>${eBirdData[label - 1].comName}</u><h3>
+      <h3><a href="https://www.allaboutbirds.org/search/?q=${eBirdData[label - 1].comName}" target="_blank">${eBirdData[label - 1].comName}</a><h3>
       <p>Location: ${eBirdData[label - 1].locName}</p>
       <p>Date: ${eBirdData[label - 1].obsDt}</li>
       `;
-
-
-
 
     marker.addListener('click', function () {
       new google.maps.InfoWindow({
