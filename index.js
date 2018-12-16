@@ -2,6 +2,8 @@
 'use strict';
 
 let zIndex = 0;
+let markers = [];
+
 const googleGeocode = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
 
@@ -15,14 +17,16 @@ function handleMapButtonClick(map, eBirdData) {
   // listen for map button click
   $('#js-results-list').on('click', '.map-button', function (event) {
 
-    const lat = parseFloat(event.target.getAttribute("lat"));
-    const lng = parseFloat(event.target.getAttribute("lng"));
+    const lat = parseFloat(this.getAttribute("lat"));
+    const lng = parseFloat(this.getAttribute("lng"));
 
     const label = $(event.target).parent()[0].childNodes[0].data.split(' ')[0];
 
     const latLng = { lat: lat, lng: lng };
 
-    map.setCenter(latLng);
+    // center map on marker
+    map.panTo(latLng);
+
     const marker = new google.maps.Marker({
       position: latLng,
       map: map,
@@ -36,7 +40,7 @@ function handleMapButtonClick(map, eBirdData) {
     const infoWindowContent = `
       <h3><a href="https://www.allaboutbirds.org/search/?q=${eBirdData[label - 1].comName}" target="_blank">${eBirdData[label - 1].comName}</a><h3>
       <p>Location: ${eBirdData[label - 1].locName}</p>
-      <p>Date: ${eBirdData[label - 1].obsDt}</li>
+      <p>Date of observation: ${eBirdData[label - 1].obsDt}</li>
       `;
 
     marker.addListener('click', function () {
@@ -44,6 +48,7 @@ function handleMapButtonClick(map, eBirdData) {
         content: infoWindowContent
       }).open(map, marker);
     });
+
   });
 }
 
