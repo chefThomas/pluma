@@ -5,15 +5,18 @@ let map;
 let zIndex = 0;
 let markers = [];
 
+
 const googleGeocode = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
 
 const googleApiKey = 'AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA';
 const ebirdApiKey = '3k3ndtikp21v';
 
+
 function addMarkerToArr(location, label, eBirdData) {
 
   map.panTo(location);
+
 
   const marker = new google.maps.Marker({
     position: location,
@@ -27,12 +30,13 @@ function addMarkerToArr(location, label, eBirdData) {
   const infoWindowContent = `
       <h3><a href="https://www.allaboutbirds.org/search/?q=${eBirdData[label - 1].comName}" target="_blank">${eBirdData[label - 1].comName}</a><h3>
       <p>Location: ${eBirdData[label - 1].locName}</p>
-      <p>Date: ${eBirdData[label - 1].obsDt}</li>
+      <p>Observation date: ${eBirdData[label - 1].obsDt}</li>
       `;
 
   marker.addListener('click', function () {
     new google.maps.InfoWindow({ content: infoWindowContent })
       .open(map, marker);
+
   });
 
   markers.push(marker);
