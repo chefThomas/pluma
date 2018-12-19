@@ -41,8 +41,15 @@ function addMarkerToArr(location, label, eBirdData) {
 
   });
 
+
+
   markers.push(marker);
 }
+
+function generateTextDirections(stepsArr) {
+  console.log(stepsArr);
+}
+
 
 function getDirections(origin, destination) {
 
@@ -51,14 +58,16 @@ function getDirections(origin, destination) {
   directionsService.route({
     origin: origin,
     destination: destination,
-    travelMode: 'DRIVING'
+    travelMode: 'DRIVING',
   }, function (response, status) {
     if (status === 'OK') {
       // Pass data to the map
       directionsDisplay.setDirections(response);
 
       // See the data in the console
-      console.log(response);
+      console.log(response); // directions in response obj --> routes/legs/steps
+      const steps = response.routes[0].legs[0].steps;
+      generateTextDirections(steps)
     } else {
       window.alert('Directions request failed due to ' + status);
     }
@@ -81,6 +90,8 @@ function handleDirectionsButtonClick() {
         };
         getDirections(origin, destination);
       });
+    } else {
+      console.log('geolocation not supported')
     }
   });
 }
@@ -199,7 +210,7 @@ function handleLocationSubmit() {
 function initMap() {
 
   directionsService = new google.maps.DirectionsService;
-  directionsDisplay = new google.maps.DirectionsRenderer;
+  directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
 
   map = new google.maps.Map(document.querySelector('.map'), {
     center: { lat: 40.7828647, lng: -73.9653551 },
