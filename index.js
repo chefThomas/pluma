@@ -2,11 +2,14 @@
 'use strict';
 
 let map;
+let directionsService;
+let directionsDisplay;
 let zIndex = 0;
 let markers = [];
 
 
-const googleGeocode = 'https://maps.googleapis.com/maps/api/geocode/json?';
+const googleGeocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
+const googleDirectionsUrl = 'https://maps.googleapis.com/maps/api/directions/json?'
 const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
 
 const googleApiKey = 'AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA';
@@ -16,7 +19,6 @@ const ebirdApiKey = '3k3ndtikp21v';
 function addMarkerToArr(location, label, eBirdData) {
 
   map.panTo(location);
-
 
   const marker = new google.maps.Marker({
     position: location,
@@ -42,9 +44,52 @@ function addMarkerToArr(location, label, eBirdData) {
   markers.push(marker);
 }
 
+function getDirections(origin, destination) {
+
+  directionsDisplay.setMap(map);
+
+  directionsService.route({
+    origin: origin,
+    destination: destination,
+    travelMode: 'DRIVING'
+  }, function (response, status) {
+    if (status === 'OK') {
+      // Pass data to the map
+      directionsDisplay.setDirections(response);
+
+      // See the data in the console
+      console.log(response);
+    } else {
+      window.alert('Directions request failed due to ' + status);
+    }
+  });
+}
+
+function handleDirectionsButtonClick() {
+  $('#js-results-list').on('click', '.directions-button', function (event) {
+
+    const lat = parseFloat(this.getAttribute("lat"));
+    const lng = parseFloat(this.getAttribute("lng"));
+
+    const destination = { lat: lat, lng: lng };
+
+    if (navigator.geolocation) {
+      navigator.geolocation.getCurrentPosition(function (position) {
+        var origin = {
+          lat: position.coords.latitude,
+          lng: position.coords.longitude
+        };
+        getDirections(origin, destination);
+      });
+    }
+  });
+}
+
+
+
 function handleMapButtonClick(eBirdData) {
   $('#js-results-list').on('click', '.map-button', function (event) {
-
+    console.log('map button click');
     const label = $(this).parent()[0].childNodes[0].data.split(' ')[0];
 
     let controlFlow = true;
@@ -76,7 +121,7 @@ function renderObservations(responseJson) {
   for (let obs of responseJson) {
 
     $('#js-results-list').append(
-      `<li>${counter} ${obs.comName} | <button class="map-button" lat=${obs.lat} lng=${obs.lng}>Map</button></li>`
+      `<li>${counter} ${obs.comName} | <button class="map-button" lat=${obs.lat} lng=${obs.lng}>Map</button><button class="directions-button" lat=${obs.lat} lng=${obs.lng}>Directions</button></li>`
     );
     counter++;
   }
@@ -111,6 +156,7 @@ function getEbirdData(latitude, longitude, maxResults) {
       });
 
       handleMapButtonClick(jsonResponse);
+      handleDirectionsButtonClick(jsonResponse);
     });
 }
 
@@ -118,7 +164,7 @@ function geocodeAddress(location) {
 
   const queryParams = `address=${encodeURIComponent(location)}`;
 
-  const searchString = googleGeocode + queryParams + `&key=${googleApiKey}`;
+  const searchString = googleGeocodeUrl + queryParams + `&key=${googleApiKey}`;
 
   fetch(searchString)
     .then(response => response.json())
@@ -135,6 +181,12 @@ function geocodeAddress(location) {
 function handleLocationSubmit() {
   $('form').on('click', 'input#submit-button', event => {
     markers = [];
+
+    // clear routes on map
+    directionsDisplay.setMap(null);
+
+    //clear markers on map (remove to compare different locations!)
+
     event.preventDefault();
 
     const location = $('.user-input').val();
@@ -145,14 +197,19 @@ function handleLocationSubmit() {
 }
 
 function initMap() {
-  map = new google.maps.Map(document.querySelector('.map'), {
 
+  directionsService = new google.maps.DirectionsService;
+  directionsDisplay = new google.maps.DirectionsRenderer;
+
+  map = new google.maps.Map(document.querySelector('.map'), {
     center: { lat: 40.7828647, lng: -73.9653551 },
-    zoom: 10
+    zoom: 10,
+    scaleControl: true
   });
 
-  console.log(map);
 }
+
+console.log(markers)
 
 $(initMap);
 $(handleLocationSubmit);
