@@ -182,7 +182,6 @@
 //     center: center,
 //     radius: 25000
 //   });
-
 // }
 
 // function geocodeAddress(location) {
@@ -220,45 +219,30 @@
 //   });
 // }
 
-// function handleLocationSubmit() {
-//   $('form').on('submit', event => {
-
-//     resetMap();
-//     console.log('new location. Check markers arr', markers);
-
-//     event.preventDefault();
-
-//     const location = $('.user-input').val();
-
-//     geocodeAddress(location);
-
-//   });
-// }
-
-
-
-// $(handleLocationSubmit);
-// $(handleResetButtonClick);
-
 
 // // ===================================================================
 // // ===================================================================
 // // ===================================================================
-
+let map;
+let searchRadius;
 let markers = [];
 const googleGeocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const googleApiKey = 'AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA';
 const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
 
-function handleMapButtonClick(eBirdData) {
-  $('#js-results-list').on('click', '.map-button', function (event) {
+
+function handleResetButton() {
+  $('form').on('click', '#reset-button', clearPreviousResults)
+}
+
+function handleMapButtonClick() {
+  console.log('handle map button click')
+  $('#js-results-list').unbind('click').on('click', '.map-button', function (event) {
 
     const observationId = $(this).parent()[0].childNodes[0].data.split(' ')[0];
+    const searchForMarkerIndex = markers.findIndex(marker => marker.label == observationId);
 
-    // check markers array for marker with label = observationId if exists, then remove from array and call marker.setMap(null), otherwise, create marker and push to marker array
-    const searchForMarker = markers.findIndex(marker => marker.label == observationId)
-
-    if searchForMarker === -1 {
+    if (searchForMarkerIndex === -1) {
       const lat = parseFloat(this.getAttribute("data-lat"));
       const lng = parseFloat(this.getAttribute("data-lng"));
       const latLng = { lat: lat, lng: lng };
@@ -269,39 +253,12 @@ function handleMapButtonClick(eBirdData) {
       });
       markers.push(marker);
       console.log(markers);
+    } else {
+      markers[searchForMarkerIndex].setMap(null);
+      markers.splice(searchForMarkerIndex, 1);
+      console.log(markers);
     }
-
-
-
-    // unset from map and delete from arr
-
-
-    // create new marker and push to marker array
-    // get coordinates from button 
-
-
-    // get label from observation list
-
-
-
-    // // checks markers array for marker with same label
-    // const markerIndex = markers.findIndex(function (marker) {
-    //   return marker.label === label;
-    // });
-
-    // console.log('markerIndex using findIndex: ', markerIndex);
-
-    // if (markerIndex > -1) {
-    //   // remove from map
-    //   markers[markerIndex].setMap(null);
-    //   // splice out of markers array
-    //   markers.splice(markerIndex, 1);
-
-    //   console.log('check markers after splice', markers);
-
-    // } else {
-    // addObservationMarker(latLng, label, eBirdData);
-    // }
+    markers.forEach(marker => marker.setMap(map));
   });
 }
 
@@ -310,92 +267,113 @@ function renderObservationsList(responseJson) {
   $('#js-results-list').empty();
   let counter = 1;
   for (let obs of responseJson) {
-
     $('#js-results-list').append(
       `<li>${counter} ${obs.comName} | <button class="map-button" data-lat=${obs.lat} data-lng=${obs.lng}>Map</button><button class="directions-button" data-lat=${obs.lat} data-lng=${obs.lng}>Directions</button></li>`
     );
     counter++;
   }
-
-
 }
 
-function getEbirdData(latitude, longitude, maxResults) {
 
+function getEbirdData(latitude, longitude, maxResults, searchRadius) {
+
+  console.log('search radius: ', searchRadius)
   let ebirdNearbyUrl = ebirdNearbyUrlBase + `lat=${latitude}&lng=${longitude}`;
 
   if (maxResults) {
     ebirdNearbyUrl += `&maxResults=${maxResults}`;
   }
 
+  if (searchRadius) {
+    ebirdNearbyUrl += `&dist=${searchRadius}`;
+  }
+
+  console.log("ebird api url call", ebirdNearbyUrl);
+
+
   fetch(ebirdNearbyUrl)
     .then(response => response.json())
     .then(jsonResponse => {
       console.log('ebird fetch', jsonResponse);
-
       // generate results list
       renderObservationsList(jsonResponse);
-      generateMarkerArray(jsonResponse);
+      // generateMarkerArray(jsonResponse);
       handleMapButtonClick(jsonResponse);
       // handleDirectionsButtonClick(jsonResponse);
     });
 }
 
+
 function initMap(center) {
   map = new google.maps.Map(document.querySelector('.map'), {
-    zoom: 12,
+    zoom: 8,
     center: center,
+  });
+
+  searchRadius = $('#search-radius').val();
+
+  searchRadius = new google.maps.Circle({
+    strokeColor: '#FF0000',
+    strokeOpacity: 0.6,
+    strokeWeight: 1,
+    fillColor: '#FF0000',
+    fillOpacity: 0.05,
+    map: map,
+    center: center,
+    radius: searchRadius * 1000
   });
 }
 
+
 function geocodeAddress(location) {
-
   const queryParams = `address=${encodeURIComponent(location)}`;
-
   const searchString = googleGeocodeUrl + queryParams + `&key=${googleApiKey}`;
 
-  // get coords from location 
   fetch(searchString)
     .then(response => response.json())
     .then(json => {
-
+      // get coords from geocode api
       const { lat, lng } = json.results[0].geometry.location;
 
+      //get max from ui
       const maxResults = $('#max-results').val();
+      //get search radius in km and convert to 
+      const ebirdSearchRadius = $('#search-radius').val();
+
+      console.log(ebirdSearchRadius);
+
       // center map on location
       const mapCenter = { lat: lat, lng: lng };
       console.log('map center', mapCenter);
       // create map
       initMap(mapCenter);
       // bird observation data from eBird
-      getEbirdData(lat, lng, maxResults);
+      getEbirdData(lat, lng, maxResults, ebirdSearchRadius);
     });
 }
+
+
+function clearPreviousResults() {
+  // remove markers
+  markers.forEach(marker => marker.setMap(null));
+  // clear marker array
+  markers = [];
+  //clear search radius
+  searchRadius.setMap(null);
+}
+
 
 function handleLocationSubmit() {
   $('form').on('submit', event => {
     event.preventDefault();
+    if (markers[0]) { clearPreviousResults() };
     const location = $('.user-input').val();
-
     geocodeAddress(location);
   });
 }
 
 $(handleLocationSubmit);
+$(handleResetButton);
 
 
 
-// // add marker when button pressed
-// function addMarker(location) {
-//   const marker = new google.maps.Marker({
-//     position: location,
-//     map: map
-//   });
-//   markers.push(marker);
-// }
-
-// function setMarkers(map) {
-//   for (marker of markers) {
-//     marker.setMap(map);
-//   }
-// }
