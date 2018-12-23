@@ -117,7 +117,7 @@ function renderObservationsList(responseJson) {
   // remove previous results
   $('#js-results-list').empty();
 
-  // counter is used as l
+  // id on marker to link mapped observation to item in return list
   let id = 1;
   for (let obs of responseJson) {
     $('#js-results-list').append(
@@ -134,12 +134,12 @@ function generateUrl(latitude, longitude) {
 
   let ebirdNearbyUrl = ebirdNearbyUrlBase + `lat=${latitude}&lng=${longitude}`;
 
-  // return limit optional 
+  // return limit optional. defaults to all 
   if (maxResults) {
     ebirdNearbyUrl += `&maxResults=${maxResults}`;
   }
 
-  // default to 25km, but can be specified by user
+  // defaults to 25km, but can be specified by user
   if (userRadiusInput) {
     ebirdNearbyUrl += `&dist=${userRadiusInput}`;
   }
