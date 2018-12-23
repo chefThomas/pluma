@@ -1,3 +1,4 @@
+// let map;
 let searchRadius;
 let markers = [];
 let directionsDisplayArr = [];
@@ -5,7 +6,6 @@ const googleGeocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const googleApiKey = 'AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA';
 const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
 
-<<<<<<< HEAD
 
 function handleResetButton() {
   $('form').on('click', '#reset-button', clearPreviousResults)
@@ -67,228 +67,6 @@ function handleDirectionsButtonClick() {
   });
 }
 
-function getWikiImage(commonName) {
-
-  console.log('get wiki image ', commonName);
-
-  const wikipediaApiUri = `https://en.wikipedia.org/w/api.php?action=query&titles=${commonName}&prop=pageimages&format=json&pithumbsize=100&origin=*`;
-=======
-// 'use strict';
-
-// let map;
-// let directionsService;
-// let directionsDisplay;
-// let zIndex = 0;
-// let markers = [];
-
-
-// const googleGeocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
-// const googleDirectionsUrl = 'https://maps.googleapis.com/maps/api/directions/json?'
-// const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
-
-// const googleApiKey = 'AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA';
-// const ebirdApiKey = '3k3ndtikp21v';
-
-
-// function addMarkerToArr(location, label, eBirdData) {
-
-//   map.panTo(location);
-
-//   const marker = new google.maps.Marker({
-//     position: location,
-//     map: map,
-//     label: label,
-//     zIndex: zIndex
-//   });
-
-//   zIndex++;
-
-//   const infoWindowContent = `
-//       <h3><a href="https://www.allaboutbirds.org/search/?q=${eBirdData[label - 1].comName}" target="_blank">${eBirdData[label - 1].comName}</a><h3>
-//       <p>Location: ${eBirdData[label - 1].locName}</p>
-//       <p>Observation date: ${eBirdData[label - 1].obsDt}</li>
-//       `;
-
-//   marker.addListener('click', function () {
-//     new google.maps.InfoWindow({ content: infoWindowContent })
-//       .open(map, marker);
-
-//   });
-
-//   markers.push(marker);
-// }
-
-// function generateTextDirections(stepsArr) {
-//   console.log(stepsArr);
-// }
-
-
-// function getDirections(origin, destination) {
-
-//   directionsDisplay.setMap(map);
-
-//   directionsService.route({
-//     origin: origin,
-//     destination: destination,
-//     travelMode: 'DRIVING',
-//   }, function (response, status) {
-//     if (status === 'OK') {
-//       // Pass data to the map
-//       directionsDisplay.setDirections(response);
-
-//       // See the data in the console
-//       console.log(response); // directions in response obj --> routes/legs/steps
-//       const steps = response.routes[0].legs[0].steps;
-//       generateTextDirections(steps)
-//     } else {
-//       window.alert('Directions request failed due to ' + status);
-//     }
-//   });
-// }
-
-// function handleDirectionsButtonClick() {
-//   $('#js-results-list').on('click', '.directions-button', function (event) {
-
-//     const lat = parseFloat(this.getAttribute("lat"));
-//     const lng = parseFloat(this.getAttribute("lng"));
-
-//     const destination = { lat: lat, lng: lng };
-
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(function (position) {
-//         var origin = {
-//           lat: position.coords.latitude,
-//           lng: position.coords.longitude
-//         };
-//         getDirections(origin, destination);
-//       });
-//     } else {
-//       console.log('geolocation not supported')
-//     }
-//   });
-// }
-// function handleDirectionsButtonClick() {
-//   $('#js-results-list').on('click', '.directions-button', function (event) {
-
-//     const lat = parseFloat(this.getAttribute("lat"));
-//     const lng = parseFloat(this.getAttribute("lng"));
-
-//     const destination = { lat: lat, lng: lng };
-
-//     if (navigator.geolocation) {
-//       navigator.geolocation.getCurrentPosition(function (position) {
-//         var origin = {
-//           lat: position.coords.latitude,
-//           lng: position.coords.longitude
-//         };
-//         getDirections(origin, destination);
-//       });
-//     } else {
-//       console.log('geolocation not supported')
-//     }
-//   });
-// }
-
-
-
-// function getEbirdData(latitude, longitude, maxResults) {
-
-//   let ebirdNearbyUrl = ebirdNearbyUrlBase + `lat=${latitude}&lng=${longitude}`;
-
-//   if (maxResults) {
-//     ebirdNearbyUrl += `&maxResults=${maxResults}`;
-//   }
-
-//   fetch(ebirdNearbyUrl)
-//     .then(response => response.json())
-//     .then(jsonResponse => {
-//       console.log('ebird fetch', jsonResponse);
-
-//       renderObservationsList(jsonResponse);
-//       handleMapButtonClick(jsonResponse);
-//       handleDirectionsButtonClick(jsonResponse);
-//     });
-// }
-
-// // ===================================================================
-// // ===================================================================
-// let map;
-let searchRadius;
-let markers = [];
-let directionsDisplayArr = [];
-const googleGeocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
-const googleApiKey = 'AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA';
-const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
->>>>>>> 05bfdddc76daabd5ae674f55cab3617f3fa7e187
-
-  console.log(wikipediaApiUri);
-
-  fetch(wikipediaApiUri)
-    .then(response => response.json())
-    .then(jsonResponse => {
-      console.log('wiki response ', jsonResponse);
-    });
-}
-
-<<<<<<< HEAD
-=======
-function getDirections(origin, destination) {
-  directionsDisplay = new google.maps.DirectionsRenderer;
-  directionsService = new google.maps.DirectionsService;
-  console.log('get direx run');
-  directionsDisplay.setMap(map);
-
-  directionsService.route({
-    origin: origin,
-    destination: destination,
-    travelMode: 'DRIVING',
-  }, function (response, status) {
-    if (status === 'OK') {
-      // Pass data to the map
-      directionsDisplay.setDirections(response);
-
-    } else {
-      window.alert('Directions request failed due to ' + status);
-    }
-  });
-
-  directionsDisplayArr.push(directionsDisplay);
-}
-
-
-function handleDirectionsButtonClick() {
-  $('#js-results-list').on('click', '.directions-button', function (event) {
-
-    console.log('handle dir button run')
-    if (directionsDisplayArr[0]) {
-      directionsDisplayArr[0].setMap(null);
-      directionsDisplayArr = [];
-    } else {
-      const lat = parseFloat(this.getAttribute("data-lat"));
-      const lng = parseFloat(this.getAttribute("data-lng"));
-
-      const destination = { lat: lat, lng: lng };
-
-      console.log('destinatoin in hand dir button ', destination)
-
-      if (navigator.geolocation) {
-        console.log('in nav.geo')
-        navigator.geolocation.getCurrentPosition(function (position) {
-          var origin = {
-            lat: position.coords.latitude,
-            lng: position.coords.longitude
-          };
-          console.log('about to call getDir')
-          getDirections(origin, destination);
-        });
-      } else {
-        alert('geolocation not supported')
-      }
-    }
-  });
-}
-
->>>>>>> 05bfdddc76daabd5ae674f55cab3617f3fa7e187
 function handleMapButtonClick(eBirdData) {
   console.log('handle map button click')
   $('#js-results-list').unbind('click').on('click', '.map-button', function (event) {
@@ -301,21 +79,17 @@ function handleMapButtonClick(eBirdData) {
       const lng = parseFloat(this.getAttribute("data-lng"));
       const latLng = { lat: lat, lng: lng };
 
+      // center new marker on map
+      map.panTo(latLng);
+
+      //create marker
       let marker = new google.maps.Marker({
         position: latLng,
         label: observationId
       });
 
-<<<<<<< HEAD
-      getWikiImage(eBirdData[observationId - 1].sciName)
-
-
-      const infoWindowContent = `
-      <img>https://en.wikipedia.org/w/api.php?action=query&titles=american%20robin&prop=pageimages&format=json&pithumbsize=100
-=======
       // info window 
       const infoWindowContent = `
->>>>>>> 05bfdddc76daabd5ae674f55cab3617f3fa7e187
       <h3><u>${eBirdData[observationId - 1].comName}</u><h3>
       <p>Location: ${eBirdData[observationId - 1].locName}</p>
       <p>Date: ${eBirdData[observationId - 1].obsDt}</li>
@@ -330,13 +104,10 @@ function handleMapButtonClick(eBirdData) {
       console.log(markers);
 
     } else {
-<<<<<<< HEAD
-      // removes marker from map and marker array if already on map
-=======
       // removes marker from map and marker array
->>>>>>> 05bfdddc76daabd5ae674f55cab3617f3fa7e187
       markers[searchForMarkerIndex].setMap(null);
       markers.splice(searchForMarkerIndex, 1);
+      console.log(markers);
     }
     markers.forEach(marker => marker.setMap(map));
   });
@@ -402,11 +173,7 @@ function calculateZoom(userRadius) {
 
 function initMap(center) {
   // define search radius circle drawn on map and determine initial zoom setting
-<<<<<<< HEAD
-  let userRadiusInput = $('#search-radius').val();
-=======
   userRadiusInput = $('#search-radius').val();
->>>>>>> 05bfdddc76daabd5ae674f55cab3617f3fa7e187
 
   // ebird default search radius is 25km
   if (!userRadiusInput) { userRadiusInput = 25; }
@@ -479,6 +246,3 @@ function handleLocationSubmit() {
 
 $(handleLocationSubmit);
 $(handleResetButton);
-
-
-
