@@ -2,42 +2,67 @@
 <html lang="en">
 
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta http-equiv="X-UA-Compatible" content="ie=edge">
-  <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
-    crossorigin="anonymous"></script>
-  <link rel="stylesheet" href="./styles/fonts/stylesheet.css">
-  <!-- <link rel="stylesheet" href="./styles/jquery-ui.min.css"> -->
-  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/8.0.1/normalize.min.css">
-  <link rel="stylesheet" href="style.css">
-  <title>pluma</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display:100,300,400,700,900" rel="stylesheet">
+
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
+        crossorigin="anonymous"></script>
+
+
+    <link rel="stylesheet" href="./styles/style.css">
+    <link rel="shortcut icon " type="image/png " href="./images/feather.png ">
+
+    <title>Pluma | see more birds</title>
 </head>
 
-<header role="banner">
-  <h1 class="header">pluma</h1>
-  <form action="">
-    <label for="address">location</label>
-    <input type="text" id="address" class="js-user-input" value="" required>
-    <label for="max-results">max results</label>
-    <input type="number" id="max-results" placeholder="all">
-    <label for="search-radius">search radius</label>
-    <input type="number" id="search-radius" placeholder="km, 50 max, 25 default">
-    <input type="submit" id="submit-button" value="submit">
-    <input type="reset" id="reset-button" value="clear map">
-  </form>
-</header>
-
 <body>
-  <div class="container">
-    <div class="map"></div>
-    <ul id="js-results-list" class="results-list hidden">
-    </ul>
-  </div>
-  <!-- <script src="data.js"></script> -->
-  <script src="https://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA&callback=initMap"
-    async defer></script>
-  <script src="index.js"></script>
-</body>
+    <header class="header header--splash" role="banner">
+        <div class="heading__container">
+            <h1 class="heading__primary">
+                <span class="heading__primary__main ">pluma</span>
+                <span class="heading__primary__sub ">see more birds</span>
+                <input type="image" src="./images/feather.png " alt="feather logo and start button " class="heading__primary__logo ">
+                <div class="heading__primary__logo-cursor "></div>
+            </h1>
+        </div>
+    </header>
+
+    <body>
+        <section>
+            <form action=" ">
+                <label for="address ">location</label>
+                <input type="text " id="address " class="js-user-input " value=" " required>
+                <label for="max-results ">max results</label>
+                <input type="number " id="max-results " placeholder="all ">
+                <label for="search-radius ">search radius</label>
+                <input type="number " id="search-radius " placeholder="km, 50 max, 25 default ">
+                <input type="submit " id="submit-button " value="submit ">
+                <input type="reset " id="reset-button " value="clear map ">
+            </form>
+
+            <div class="container ">
+                <div class="map "></div>
+                <ul id="js-results-list " class="results-list hidden ">
+                </ul>
+            </div>
+        </section>
+
+
+        <script src="https://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA&callback=initMap "
+            async defer></script>
+        <script src="index.js "></script>
+
+    </body>
 
 </html>
+
+
+<!-- in footer -->
+
+<!-- feather icon credit
+<div>Icons made by <a href="https://www.freepik.com/ " title="Freepik ">Freepik</a> from <a href="https://www.flaticon.com/ "
+        title="Flaticon ">www.flaticon.com</a> is licensed by <a href="http://creativecommons.org/licenses/by/3.0/
+        " title="Creative Commons BY 3.0 "
+        target="_blank ">CC 3.0 BY</a></div> -->
