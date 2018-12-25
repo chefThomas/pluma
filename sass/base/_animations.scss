@@ -1,0 +1,62 @@
+
+
+@keyframes fadeInLeft {
+  0% {
+    opacity: 0;
+    transform: translateX(-7rem)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes fadeInRight {
+  0% {
+    opacity: 0;
+    transform: translateX(7.5rem)
+  }
+
+  100% {
+    opacity: 1;
+    transform: translateX(0)
+  }
+}
+
+@keyframes fadeIn {
+  0% {
+    opacity: 0;    
+  }
+
+  80% {
+    opacity: 0;
+  }
+
+  100% {
+    opacity: 1;
+  }
+}
+
+@keyframes pulse {
+  0% {
+    opacity: 0;
+  }
+
+  49% {
+    opacity: 0;
+  }
+  
+  50% {
+    opacity: 1;
+  }
+
+  51% {
+    opacity: 1;
+  }
+
+
+  100% {
+    opacity: 1;
+  }
+}

@@ -1,0 +1,66 @@
+
+.header--splash {
+  height: 95vh;
+  background-image: linear-gradient(
+    to bottom,rgba($color-primary-dark, .8),
+    rgba($color-primary-light, .8)),
+    url('../images/ray-hennessy-126085-unsplash-min.jpg');
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+}
+
+.heading__container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.heading__primary {
+  color: $color-white;
+  position: relative;
+
+  &__main {
+    display: block;
+    font-size: 4rem;
+    font-weight:400;
+    letter-spacing: 4vw;
+
+    animation-name: fadeInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in;
+  }
+
+  &__sub {
+    display: block;
+    font-size: 1.5rem;
+    font-weight:300;
+    letter-spacing: 1.2vw;
+
+    animation-name: fadeInRight;
+    animation-duration: 2s;
+  }
+
+  &__logo {
+    height: 4rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-95%, 100%);
+    padding-bottom: 0.5rem;  
+  }
+
+  &__logo-cursor {
+    height: 4rem;
+    width: 3.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-95%, 110%);
+    padding-bottom: 0.5rem;
+    border-bottom: 0.2rem solid $color-white;
+
+    animation: pulse 1.5s infinite;
+    animation-delay: 3.0s;
+  }
+}
