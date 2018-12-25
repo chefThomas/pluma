@@ -38,7 +38,6 @@ function getDirections(origin, destination) {
 function handleDirectionsButtonClick() {
   $('#js-results-list').on('click', '.directions-button', function (event) {
 
-    console.log('handle dir button run')
     if (directionsDisplayArr[0]) {
       directionsDisplayArr[0].setMap(null);
       directionsDisplayArr = [];
@@ -67,6 +66,21 @@ function handleDirectionsButtonClick() {
   });
 }
 
+/// END WORKING ON THIS FUNCTION. NEED TO GET URL OF IMAGE AND PASS TO INFO WINDOW
+function getWikipediaImageUrl(speciesName) {
+  speciesName = 'American Crow';
+
+  const encodeSpeciesName = speciesName.toLowerCase();
+  const wikiRequestUri = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeSpeciesName}&prop=pageimages&format=json&pithumbsize=100&origin=*`;
+
+  const jsonResponse = fetch(wikiRequestUri)
+    .then(response => response.json())
+    .then(jsonResponse => {
+      console.log('wiki image fetch', jsonResponse);
+    });
+}
+
+
 function handleMapButtonClick(eBirdData) {
   console.log('handle map button click')
   $('#js-results-list').unbind('click').on('click', '.map-button', function (event) {
@@ -87,6 +101,8 @@ function handleMapButtonClick(eBirdData) {
         position: latLng,
         label: observationId
       });
+
+      // getWikipediaImage(eBirdData[observationId - 1].comName);
 
       // info window 
       const infoWindowContent = `

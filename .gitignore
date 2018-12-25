@@ -1,6 +1,5 @@
-data.js
-images/
 metaIgnore/
-scripts/
 species-list.json
-
+package.json
+package.lock.json
+node_modules/
