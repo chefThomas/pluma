@@ -41,60 +41,84 @@
   padding: 0px;
   box-sizing: inherit; }
 
+html {
+  background-color: #f7f7f7; }
+
 body {
   padding: 2rem;
-  box-sizing: border-box; }
+  box-sizing: border-box;
+  color: #777; }
+
+.heading-secondary {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 2rem;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  letter-spacing: .2rem;
+  color: transparent;
+  background-clip: text;
+  background-image: linear-gradient(to left, #0c2461, #4a69bd);
+  text-align: center; }
 
 /* html is root. Default font-size is */
 html {
   font-size: 62.5%; }
 
 body {
-  font-family: 'Major Mono Display', monospace;
+  font-family: 'Lato', sans-serif;
   font-weight: 400;
-  /* font-size: 16px; */
   line-height: 1.7;
   color: #777; }
 
-.header--splash {
-  height: 95vh;
-  background-image: linear-gradient(to bottom, rgba(12, 36, 97, 0.8), rgba(74, 105, 189, 0.8)), url("../images/ray-hennessy-126085-unsplash-min.jpg");
-  background-size: cover;
-  background-position: top;
-  position: relative;
-  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
-
-.heading__container {
-  position: absolute;
-  top: 30%;
-  left: 50%;
-  transform: translate(-50%, -50%); }
-
-.heading__primary {
-  color: #efefef;
+.directions-card {
+  height: auto;
+  border-radius: 2px;
+  background-color: white;
+  box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   position: relative; }
-  .heading__primary__main {
+  .directions-card__header {
+    color: #efefef;
+    text-align: center;
+    background-size: cover;
+    height: 23rem;
+    clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%); }
+    .directions-card__header__icon {
+      padding-top: 3.25rem;
+      padding-bottom: 1.5rem; }
+    .directions-card__header.location {
+      background-image: linear-gradient(to right, rgba(120, 224, 143, 0.8), rgba(56, 173, 169, 0.8)), url("../images/tobias-tullius-225741-unsplash-foggy-forest.jpg"); }
+    .directions-card__header.filter {
+      background-image: linear-gradient(to right, rgba(120, 224, 143, 0.8), rgba(56, 173, 169, 0.8)), url("../images/luca-bravo-134776-unsplash-pine-river-min.jpg"); }
+    .directions-card__header.explore {
+      background-image: linear-gradient(to right, rgba(120, 224, 143, 0.8), rgba(56, 173, 169, 0.8)), url("../images/optics-den-birding-binoculars-4.jpg"); }
+  .directions-card__heading {
+    text-transform: uppercase;
     display: block;
-    font-size: 4rem;
-    font-weight: 400;
-    letter-spacing: 4vw;
-    animation-name: fadeInLeft;
-    animation-duration: 1.5s;
-    animation-timing-function: ease-in; }
-  .heading__primary__sub {
-    display: block;
-    font-size: 1.5rem;
-    font-weight: 300;
-    letter-spacing: 1.2vw;
-    animation-name: fadeInRight;
-    animation-duration: 2s; }
-  .heading__primary__logo {
-    height: 4rem;
-    position: absolute;
-    left: 50%;
-    transform: translate(-95%, 100%);
-    padding-bottom: 0.5rem; }
-  .heading__primary__logo-cursor {
+    font-size: 2rem;
+    padding: 1rem 1.5rem; }
+  .directions-card__body {
+    padding: 1rem 3rem;
+    font-size: 1.5rem; }
+    .directions-card__body ul li {
+      text-align: center;
+      list-style: none;
+      font-size: 1.5rem;
+      padding: 1rem; }
+      .directions-card__body ul li:not(:last-child) {
+        border-bottom: 1px solid #d3d3d3; }
+
+.heading__secondary {
+  font-size: 2.5rem;
+  font-weight: 700; }
+
+.logo {
+  height: 4rem;
+  position: absolute;
+  left: 50%;
+  transform: translate(-95%, 100%);
+  padding-bottom: 0.5rem; }
+  .logo__cursor {
     height: 4rem;
     width: 3.5rem;
     position: absolute;
@@ -104,6 +128,61 @@ body {
     border-bottom: 0.2rem solid #efefef;
     animation: pulse 1.5s infinite;
     animation-delay: 3.0s; }
+
+.header--splash {
+  height: 95vh;
+  background-image: linear-gradient(to bottom, rgba(12, 36, 97, 0.8), rgba(74, 105, 189, 0.8)), url("../images/ray-hennessy-126085-unsplash-min.jpg");
+  background-size: cover;
+  background-position: top;
+  position: relative;
+  clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  margin-bottom: 3rem; }
+
+.heading__container {
+  position: absolute;
+  top: 30%;
+  left: 50%;
+  transform: translate(-50%, -50%); }
+
+.heading__primary {
+  position: relative;
+  color: #efefef;
+  backface-visibility: hidden; }
+  .heading__primary__main {
+    display: block;
+    text-transform: uppercase;
+    font-size: 4rem;
+    font-weight: 400;
+    letter-spacing: 4vw;
+    animation-name: fadeInLeft;
+    animation-duration: 1.5s;
+    animation-timing-function: ease-in; }
+  .heading__primary__sub {
+    display: block;
+    text-transform: uppercase;
+    font-size: 1.5rem;
+    font-weight: 300;
+    letter-spacing: 1.4vw;
+    animation-name: fadeInRight;
+    animation-duration: 2s; }
+
+.section-search {
+  padding: 10rem 0;
+  background-image: linear-gradient(to bottom right, rgba(74, 105, 189, 0.8), rgba(30, 55, 153, 0.8)); }
+  .section-search .search {
+    grid-column: span 4; }
+
+.row {
+  max-width: 100rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 6.25%);
+  grid-column-gap: 1%;
+  grid-row-gap: 2%;
+  justify-content: center;
+  margin-bottom: 15rem; }
+  .row .col-4 {
+    grid-column: span 12; }
 
 /* MAP STYLING */
 .container {
@@ -125,14 +204,9 @@ body {
   padding: 0; }
 
 li {
-  border: 1px solid red;
   list-style: none;
   padding: .15em;
   margin-bottom: .25em; }
-
-ul {
-  overflow-y: scroll;
-  border: 1px solid #efefef; }
 
 .map {
   max-height: 100%; }

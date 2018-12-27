@@ -1,0 +1,20 @@
+.logo {
+  height: 4rem;
+  position: absolute;
+  left: 50%;
+  transform: translate(-95%, 100%);
+  padding-bottom: 0.5rem;  
+
+  &__cursor {
+    height: 4rem;
+    width: 3.5rem;
+    position: absolute;
+    left: 50%;
+    transform: translate(-95%, 110%);
+    padding-bottom: 0.5rem;
+    border-bottom: 0.2rem solid $color-white;
+
+    animation: pulse 1.5s infinite;
+    animation-delay: 3.0s;
+  }
+}

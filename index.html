@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <link href="https://fonts.googleapis.com/css?family=Major+Mono+Display:100,300,400,700,900" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Lato:100,300,400,700,900" rel="stylesheet">
 
     <script src="https://code.jquery.com/jquery-3.3.1.slim.js" integrity="sha256-fNXJFIlca05BIO2Y5zh1xrShK3ME+/lYZ0j+ChxX2DA="
         crossorigin="anonymous"></script>
@@ -23,30 +23,87 @@
             <h1 class="heading__primary">
                 <span class="heading__primary__main ">pluma</span>
                 <span class="heading__primary__sub ">see more birds</span>
-                <input type="image" src="./images/feather.png " alt="feather logo and start button " class="heading__primary__logo ">
-                <div class="heading__primary__logo-cursor "></div>
+                <input type="image" src="./images/feather.png " alt="feather logo and start button " class="logo">
+                <div class="logo__cursor "></div>
             </h1>
         </div>
     </header>
 
     <body>
-        <section>
-            <form action=" ">
-                <label for="address ">location</label>
-                <input type="text " id="address " class="js-user-input " value=" " required>
-                <label for="max-results ">max results</label>
-                <input type="number " id="max-results " placeholder="all ">
-                <label for="search-radius ">search radius</label>
-                <input type="number " id="search-radius " placeholder="km, 50 max, 25 default ">
-                <input type="submit " id="submit-button " value="submit ">
-                <input type="reset " id="reset-button " value="clear map ">
-            </form>
-
-            <div class="container ">
-                <div class="map "></div>
-                <ul id="js-results-list " class="results-list hidden ">
-                </ul>
+        <section class="directions">
+            <header>
+                <h2 class="heading-secondary">directions</h2>
+            </header>
+            <div class="row">
+                <div class="directions-card col-4">
+                    <h3 class="directions-card__header location">
+                        <img class="directions-card__header__icon" src="./images/iconmonstr-globe-thin-64.png" alt="globe">
+                        <span class="directions-card__heading">Choose location</span>
+                    </h3>
+                    <div class="directions-card__body">
+                        <h4><span class="directions-card__body">Flexible search patterns</span></h4>
+                        <ul>
+                            <li>Street address</li>
+                            <li>City</li>
+                            <li>Zip code</li>
+                            <li>Park or landmark</li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="directions-card col-4">
+                    <h3 class="directions-card__header filter">
+                        <img class="directions-card__header__icon" src="./images/iconmonstr-filter-thin-64.png" alt="globe">
+                        <span class="directions-card__heading">Filter search</span>
+                    </h3>
+                    <div class="directions-card__body">
+                        <h4><span class="directions-card__body">Filter search</span></h4>
+                        <ul>
+                            <li>Optionally limit the number of sightings returned. Returns all by default. </li>
+                            <li>Search radius in kilometers. Min of 1 and max of 50. Default is 25. </li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="directions-card col-4">
+                    <h3 class="directions-card__header explore">
+                        <img class="directions-card__header__icon" src="./images/iconmonstr-map-thin-64.png" alt="globe">
+                        <span class="directions-card__heading">Explore results</span>
+                    </h3>
+                    <div class="directions-card__body">
+                        <h4><span class="directions-card__body">View data</span></h4>
+                        <ul>
+                            <li>Selectively place markers for species of interest</li>
+                            <li>Map routes to sightings</li>
+                            <li>Click markers to show additional information</li>
+                        </ul>
+                    </div>
+                </div>
             </div>
+        </section>
+        <section class="section-search">
+            <div class="row">
+                <div class="search">
+                    <div class="search__form">
+                        <form action="#">
+                            <label for="address ">location</label>
+                            <input type="text " id="address " class="js-user-input " value=" " required>
+                            <label for="max-results ">max results</label>
+                            <input type="number " id="max-results " placeholder="all ">
+                            <label for="search-radius ">search radius</label>
+                            <input type="number " id="search-radius " placeholder="km, 50 max, 25 default ">
+                            <button type="submit " id="submit-button " value="submit ">
+                                <button type="reset " id="reset-button " value="clear map ">
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </section>
+        <section class="results"></section>
+        <div class="container ">
+            <div class="map "></div>
+            <ul id="js-results-list " class="results-list hidden ">
+            </ul>
+        </div>
         </section>
 
 

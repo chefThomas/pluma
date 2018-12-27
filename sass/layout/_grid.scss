@@ -1,0 +1,27 @@
+.row {
+  max-width: $row-max-width;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 6.25%);
+  grid-column-gap:1%;
+  grid-row-gap: 2%;
+  justify-content: center;
+  margin-bottom: 15rem;
+
+  .col-4 {
+  grid-column: span 12;
+}
+
+}
+
+
+// .col-4 {
+//   grid-column: span 4;
+// }
+
+
+// // media queries for 
+// @media 
+// .col4 {
+//   grid-column: span 4;
+// }

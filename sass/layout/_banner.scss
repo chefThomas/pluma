@@ -9,6 +9,7 @@
   background-position: top;
   position: relative;
   clip-path: polygon(0 0, 100% 0, 100% 85%, 0 100%);
+  margin-bottom: 3rem;
 }
 
 .heading__container {
@@ -19,11 +20,15 @@
 }
 
 .heading__primary {
-  color: $color-white;
   position: relative;
+  color: $color-white;
+  backface-visibility: hidden;
+
 
   &__main {
     display: block;
+
+    text-transform: uppercase;
     font-size: 4rem;
     font-weight:400;
     letter-spacing: 4vw;
@@ -35,32 +40,13 @@
 
   &__sub {
     display: block;
+
+    text-transform: uppercase;
     font-size: 1.5rem;
     font-weight:300;
-    letter-spacing: 1.2vw;
+    letter-spacing: 1.4vw;
 
     animation-name: fadeInRight;
     animation-duration: 2s;
-  }
-
-  &__logo {
-    height: 4rem;
-    position: absolute;
-    left: 50%;
-    transform: translate(-95%, 100%);
-    padding-bottom: 0.5rem;  
-  }
-
-  &__logo-cursor {
-    height: 4rem;
-    width: 3.5rem;
-    position: absolute;
-    left: 50%;
-    transform: translate(-95%, 110%);
-    padding-bottom: 0.5rem;
-    border-bottom: 0.2rem solid $color-white;
-
-    animation: pulse 1.5s infinite;
-    animation-delay: 3.0s;
-  }
+  } 
 }
