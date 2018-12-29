@@ -4,9 +4,9 @@ $color-primary-light: #4a69bd; // rgba(74, 105, 189, 1)
 $color-primary-dark: #0c2461; // rgba(12, 36, 97, 1)
 
 
-$color-secondary: #38ada9;
-$color-secondary-light: #78e08f;
-$color-secondary-dark: #079992;
+$color-secondary: #38ada9; // rgba(56, 173, 169, 1)
+$color-secondary-light: #78e08f; // rgba(120, 224, 143, 1)
+$color-secondary-dark: #079992; // rgba(7, 153, 146, 1)
 
 $color-white: #efefef;
 $color-grey: #777;
@@ -14,3 +14,6 @@ $color-grey: #777;
 // LAYOUT MEASUREMENTS
 // GRID
 $row-max-width: 100rem;
+
+// MARGINS
+$section-margin-bottom: 5rem;
