@@ -139,6 +139,9 @@ body {
     animation: pulse 1.5s infinite;
     animation-delay: 3.0s; }
 
+.sightings__item {
+  display: inline-block; }
+
 .header--splash {
   height: 95vh;
   background-image: linear-gradient(to bottom, rgba(12, 36, 97, 0.8), rgba(74, 105, 189, 0.8)), url("../images/ray-hennessy-126085-unsplash-min.jpg");
@@ -248,14 +251,23 @@ body {
     grid-column: span 12; }
 
 /* MAP STYLING */
-.container {
+.results-container__map {
   display: grid;
   grid-template-columns: 1fr;
-  width: 98%;
+  width: 100%;
   padding: 1em;
   margin-left: auto;
   margin-right: auto;
-  height: 100vh; }
+  margin-bottom: 2rem;
+  height: 50vh; }
+
+.results-container__sightings {
+  margin: 1rem 0;
+  background-color: #efefef;
+  padding: 1rem;
+  display: flex;
+  height: 30vh;
+  overflow-y: scroll; }
 
 .header-map {
   padding: 1em; }
@@ -264,10 +276,5 @@ body {
   margin-left: auto;
   margin-right: auto;
   width: 85%;
-  padding: 0; }
-
-.results-list {
+  padding: 0;
   overflow-y: scroll; }
-
-.map {
-  max-height: 100%; }

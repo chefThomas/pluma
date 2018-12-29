@@ -138,7 +138,11 @@ function renderObservationsList(responseJson) {
   let id = 1;
   for (let obs of responseJson) {
     $('.js-results-list').append(
-      `<li class="sightings__item">${id} ${obs.comName} | <button class="map-button" data-lat=${obs.lat} data-lng=${obs.lng}>location</button><button class="directions-button" data-lat=${obs.lat} data-lng=${obs.lng}> route</button></li>`
+      `<li class="sighting">
+        <div class="sighting__id-and-comName">
+          <div class="sighting__id">${id}</span>
+          <span class="sighting_comName">${obs.comName}</span>
+        </span><button class="map-button" data-lat=${obs.lat} data-lng=${obs.lng}>location</button><button class="directions-button" data-lat=${obs.lat} data-lng=${obs.lng}> route</button></li>`
     );
     id++;
   }
@@ -202,6 +206,8 @@ function initMap(center) {
   map = new google.maps.Map(document.querySelector('.map'), {
     zoom: zoom,
     center: center,
+    streetViewControl: false,
+    mapTypeControl: false
   });
 
   searchRadius = new google.maps.Circle({

@@ -1,0 +1,44 @@
+/* MAP STYLING */
+.results-container {
+  &__map {
+    display: grid;
+    grid-template-columns:1fr;
+    width: 100%;
+    padding: 1em;
+    margin-left: auto;
+    margin-right: auto;
+    margin-bottom: 2rem;
+    height: 50vh;
+    
+  }
+
+  &__sightings {
+    margin: 1rem 0;
+    background-color: $color-white;
+    padding: 1rem;
+    display: flex;
+    height: 30vh;
+    overflow-y: scroll;
+  }
+}
+
+
+.header-map {
+  padding: 1em;
+}
+
+.results-list {
+  margin-left: auto;
+  margin-right: auto;
+  width: 85%;
+  padding: 0;
+  overflow-y: scroll;
+}
+
+
+
+
+
+
+
+

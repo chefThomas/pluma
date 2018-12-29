@@ -75,6 +75,7 @@
                             <li>Selectively place markers for species of interest.</li>
                             <li>Map routes to sightings.</li>
                             <li>Click markers for additional information.</li>
+                            <li>GO BIRDING : ) </li>
                         </ul>
                     </div>
                 </div>
@@ -89,7 +90,6 @@
 
                     <div class="form-container">
 
-
                         <div class="input-block">
                             <label class="input-label" for="address ">Location</label>
                             <input id="address" class="js-user-input form__input form__input--location" type="text" placeholder="Central Park" required>
@@ -101,7 +101,6 @@
                                 type="number">
                         </div>
 
-
                         <div class="input-block">
                             <label class="input-label" for="search-radius ">Search radius</label>
                             <input class="form__input form__input--search-radius" id="search-radius" placeholder="25 km" type="number">
@@ -111,13 +110,20 @@
 
                     </div>
                 </form>
-
-                <div class="container">
-                    <div class="map "></div>
+                <div class="results-container">
+                    <div class="results-container__map">
+                        <div class="map"></div>
+                    </div>
+                    <h2 class="heading-secondary heading-secondary--search">sightings</h2>
+                    <div class="results-container__sightings">
+                        <ul id="js-results-list" class="js-results-list">
+                        </ul>
+                    </div>
                 </div>
-                <ul id="js-results-list" class="results-list">
-                </ul>
             </div>
+            <footer role="contentinfo">
+                credit photos, data, and icons here
+            </footer>
 
             <!-- <button type="reset" id="reset-button " value="clear map ">Clear Map</button> -->
 
