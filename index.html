@@ -20,7 +20,7 @@
 <body>
     <header class="header header--splash" role="banner">
         <div class="heading__container">
-            <h1 class="heading__primary">
+            <h1 class="heading__primary" role="banner">
                 <span class="heading__primary__main ">pluma</span>
                 <span class="heading__primary__sub ">see more birds</span>
                 <input type="image" src="./images/feather.png " alt="feather logo and start button " class="logo">
@@ -41,7 +41,7 @@
                         <span class="directions-card__heading">Choose location</span>
                     </h3>
                     <div class="directions-card__body">
-                        <h4><span class="directions-card__body">Flexible search patterns</span></h4>
+                        <h4><span class="directions-card__body">Search by one or more of the following</span></h4>
                         <ul>
                             <li>Street address</li>
                             <li>City</li>
@@ -58,8 +58,9 @@
                     <div class="directions-card__body">
                         <h4><span class="directions-card__body">Filter search</span></h4>
                         <ul>
-                            <li>Optionally limit the number of sightings returned. Returns all by default. </li>
-                            <li>Search radius in kilometers. Min of 1 and max of 50. Default is 25. </li>
+                            <li>Optionally limit the number of sightings returned. Returns all sightings recorded in the
+                                last two weeks by default. </li>
+                            <li>Search radius in kilometers. Min of 1 and max of 50. Default of 25. </li>
                         </ul>
                     </div>
                 </div>
@@ -71,42 +72,103 @@
                     <div class="directions-card__body">
                         <h4><span class="directions-card__body">View data</span></h4>
                         <ul>
-                            <li>Selectively place markers for species of interest</li>
-                            <li>Map routes to sightings</li>
-                            <li>Click markers to show additional information</li>
+                            <li>Selectively place markers for species of interest.</li>
+                            <li>Map routes to sightings.</li>
+                            <li>Click markers for additional information.</li>
                         </ul>
                     </div>
                 </div>
             </div>
         </section>
         <section class="section-search">
-            <div class="row">
-                <div class="search">
+            <div class="row search-row">
+                <header class="header-search">
+                    <h2 class="heading-secondary heading-secondary--search">find birds</h2>
+                </header>
+                <form class="form" action="#">
+
+                    <div class="form-container">
+
+
+                        <div class="input-block">
+                            <label class="input-label" for="address ">Location</label>
+                            <input id="address" class="js-user-input form__input form__input--location" type="text" placeholder="Central Park" required>
+                        </div>
+
+                        <div class="input-block">
+                            <label class="input-label" for="max-results ">Max results</label class="input-label">
+                            <input class="form__input form__input--max-results search-form__number-input--max-results" id="max-results" placeholder="all"
+                                type="number">
+                        </div>
+
+
+                        <div class="input-block">
+                            <label class="input-label" for="search-radius ">Search radius</label>
+                            <input class="form__input form__input--search-radius" id="search-radius" placeholder="25 km" type="number">
+                        </div>
+
+                        <button type="submit" id="submit-button" class="button" value="submit ">submit</button>
+
+                    </div>
+                </form>
+
+                <div class="container">
+                    <div class="map "></div>
+                </div>
+                <ul id="js-results-list" class="results-list">
+                </ul>
+            </div>
+
+            <!-- <button type="reset" id="reset-button " value="clear map ">Clear Map</button> -->
+
+            <!-- </div> -->
+            <!-- <div class="search">
                     <div class="search__form">
-                        <form action="#">
-                            <label for="address ">location</label>
-                            <input type="text " id="address " class="js-user-input " value=" " required>
-                            <label for="max-results ">max results</label>
-                            <input type="number " id="max-results " placeholder="all ">
-                            <label for="search-radius ">search radius</label>
-                            <input type="number " id="search-radius " placeholder="km, 50 max, 25 default ">
-                            <button type="submit " id="submit-button " value="submit ">
-                                <button type="reset " id="reset-button " value="clear map ">
+                        <form class="form" action="#">
+                            <div class="form__group form__group__location">
+
+
+                                <label class="input-label" for="address ">Location</label>
+
+                                <input type="text " id="address" class="js-user-input form__input" value=" " required>
+
+
+                            </div>
+                            <div class="form__group  form__group__results--radius">
+
+                                <div class="max-results">
+                                    <label class="input-label__max-results" for="max-results ">Max results</label class="input-label">
+                                    <input id="max-results" class="form__input" type="number" placeholder="all">
+                                </div>
+
+
+                                <div class="search-radius">
+                                    <label class="input-label__search-radius" for="search-radius ">Search radius</label>
+                                    <input id="search-radius" class="form__input" type="number" placeholder="25">
+                                </div>
+                            </div>
+                            <div class="form__buttons">
+                                <button class="button" type="submit" id="submit-button " value="submit ">Submit</button>
+                                <button class="button" type="reset" id="reset-button " value="clear map ">Clear Map</button>
+                            </div>
+
                         </form>
                     </div>
 
-                </div>
+                </div> -->
             </div>
         </section>
         <section class="results"></section>
-        <div class="container ">
+        <!-- <div class="container ">
             <div class="map "></div>
-            <ul id="js-results-list " class="results-list hidden ">
+            <ul id="js-results-list" class="results-list">
             </ul>
-        </div>
+
+        </div> -->
         </section>
+        <section>
 
-
+        </section>
         <script src="https://maps.googleapis.com/maps/api/js?sensor=true&key=AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA&callback=initMap "
             async defer></script>
         <script src="index.js "></script>

@@ -130,20 +130,21 @@ function handleMapButtonClick(eBirdData) {
 }
 
 function renderObservationsList(responseJson) {
+  console.log("renderObs run and ebird resp check, ", responseJson);
   // remove previous results
-  $('#js-results-list').empty();
+  // $('#js-results-list').empty();
 
-  // id on marker to link mapped observation to item in return list
+  // id links marker to item in return list
   let id = 1;
   for (let obs of responseJson) {
-    $('#js-results-list').append(
-      `<li>${id} ${obs.comName} | <button class="map-button" data-lat=${obs.lat} data-lng=${obs.lng}>location</button><button class="directions-button" data-lat=${obs.lat} data-lng=${obs.lng}> route</button></li>`
+    $('.js-results-list').append(
+      `<li class="sightings__item">${id} ${obs.comName} | <button class="map-button" data-lat=${obs.lat} data-lng=${obs.lng}>location</button><button class="directions-button" data-lat=${obs.lat} data-lng=${obs.lng}> route</button></li>`
     );
     id++;
   }
 }
 
-function generateUrl(latitude, longitude) {
+function generateEbirdRequestUrl(latitude, longitude) {
 
   const maxResults = $('#max-results').val();
   const userRadiusInput = $('#search-radius').val();
@@ -165,7 +166,7 @@ function generateUrl(latitude, longitude) {
 
 function getEbirdData(latitude, longitude) {
 
-  const eBirdRequestUrl = generateUrl(latitude, longitude);
+  const eBirdRequestUrl = generateEbirdRequestUrl(latitude, longitude);
 
   fetch(eBirdRequestUrl)
     .then(response => response.json())

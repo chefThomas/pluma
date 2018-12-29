@@ -5,6 +5,7 @@
   background-color: white;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   position: relative;
+  margin-bottom: 3rem;
   
   &__header {
     color: $color-white;
@@ -20,15 +21,15 @@
     }
 
     &.location {
-      background-image: linear-gradient(to right, rgba(120, 224, 143, .8), rgba(56, 173, 169, .8)), url("../images/tobias-tullius-225741-unsplash-foggy-forest.jpg");
+      background-image: linear-gradient(to right, rgba(56, 173, 169, .8), rgba(7, 153, 146, .8)), url("../images/tobias-tullius-225741-unsplash-foggy-forest.jpg");
     }
 
     &.filter {
-      background-image: linear-gradient(to right, rgba(120, 224, 143, .8), rgba(56, 173, 169, .8)), url("../images/luca-bravo-134776-unsplash-pine-river-min.jpg");
+      background-image: linear-gradient(to right, rgba(74, 105, 189, .8), rgba(12, 36, 97, .8)), url("../images/luca-bravo-134776-unsplash-pine-river-min.jpg");
     }
 
     &.explore {
-      background-image:linear-gradient(to right, rgba(120, 224, 143, .8), rgba(56, 173, 169, .8)), url("../images/optics-den-birding-binoculars-4.jpg");
+      background-image:linear-gradient(to right, rgba(56, 173, 169, .9), rgba(7, 153, 146, .9)), url("../images/optics-den-birding-binoculars-4.jpg");
     }
   }
 

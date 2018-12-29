@@ -17,15 +17,8 @@ body {
   color: $color-grey;
 }
 
-.heading-secondary {
-  text-transform: uppercase;
-  font-weight: 700;
-  margin-top: 2rem;
-  margin-bottom: 2rem;
-  font-size: 2.5rem;
-  letter-spacing: .2rem;
-  color: transparent;
-  background-clip: text;
-  background-image: linear-gradient(to left, $color-primary-dark, $color-primary-light);
-  text-align: center;
+section {
+  margin-bottom: $section-margin-bottom;
+  margin-top: $section-margin-bottom;
 }
+
