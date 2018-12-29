@@ -168,7 +168,8 @@ body {
     animation-duration: 2s; }
 
 .section-search {
-  margin-top: 14rem; }
+  margin-top: 14rem;
+  background-image: linear-gradient(to bottom, rgba(12, 36, 97, 0.8), rgba(74, 105, 189, 0.8)); }
   .section-search .heading-secondary--search {
     margin-top: 0;
     color: white;
@@ -177,7 +178,6 @@ body {
     font-size: 3.5rem; }
   .section-search div.search-row {
     display: block;
-    background-image: linear-gradient(to bottom, rgba(12, 36, 97, 0.8), rgba(74, 105, 189, 0.8)), url("../images/ray-hennessy-126085-unsplash-min.jpg");
     padding: 3rem 3rem; }
     .section-search div.search-row .form {
       display: flex;
@@ -206,7 +206,7 @@ body {
         margin-bottom: 1rem;
         padding: 1rem 1rem; }
       .section-search div.search-row .form__input--location {
-        width: 30rem; }
+        width: 25rem; }
       .section-search div.search-row .form__input--max-results {
         width: 9rem; }
       .section-search div.search-row .form__input--search-radius {
