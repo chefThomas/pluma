@@ -1,15 +1,6 @@
 .section-search {
   margin-top: 14rem;
-  background-image: linear-gradient(to bottom, #0c2461cc, rgba(74, 105, 189, 0.8));
-
-
-  .heading-secondary--search {
-  margin-top: 0;
-  color: white;
-  letter-spacing: .4rem;
-  font-weight: 400;
-  font-size: 3.5rem;
-  }
+  background-image: linear-gradient(to bottom right, $color-primary-dark, $color-primary-light);
 
   div.search-row {
     display: block;
@@ -77,13 +68,15 @@
   font-family: inherit;
   text-transform: uppercase;
   font-weight: 400;
+  letter-spacing: .2rem;
   margin-top: 1rem;
-  margin-bottom: 1rem;
+  margin-bottom: 3rem;
   border-radius: 1px;
   height: 3.5rem;
   box-shadow: none;
-  border: 2px solid $color-white;
-  background-color: #264067;
+  border: 1px solid $color-white;
+  // background-color: #162f70;
+  background-color: #4664b7;
   transform: translateY(1rem);
 
   &:hover {
