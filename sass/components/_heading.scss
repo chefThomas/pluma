@@ -8,7 +8,18 @@
   font-size: 2.5rem;
   letter-spacing: .2rem;
   color: transparent;
-  background-clip: text;
-  background-image: linear-gradient(to left, $color-primary-dark, $color-primary-light);
+  background-color: $color-primary-dark;
   text-align: center;
 }
+
+.heading-secondary--search {
+  text-transform: uppercase;
+  font-weight: 700;
+  margin-top: 10rem;
+  margin-bottom: 2rem;
+  font-size: 2.5rem;
+  letter-spacing: .2rem;
+  color: $color-white;
+  text-align: center;
+}
+
