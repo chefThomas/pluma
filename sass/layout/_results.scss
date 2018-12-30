@@ -13,15 +13,16 @@
   }
 
   &__sightings {
+    color: $color-white;
     margin: 1rem 0;
-    background-color: $color-white;
+    // background-color: #ffff;
     padding: 1rem;
     display: flex;
-    height: 30vh;
+    height: 50vh;
     overflow-y: scroll;
+    border: 1px solid $color-white;
   }
 }
-
 
 .header-map {
   padding: 1em;
@@ -34,6 +35,30 @@
   padding: 0;
   overflow-y: scroll;
 }
+
+.sighting {
+  font-size: 1.5rem;
+  display: inline-block;
+  // flex-direction: column;
+  // justify-content: space-between;
+  border: 1px solid $color-white;
+  margin: .5rem;
+  padding: 1rem;
+
+  &__marker-and-route {
+    display: flex;
+    justify-content: space-around;
+
+
+    .map-button, .directions-button {
+      width: 2.75rem;
+    }
+  }
+}
+
+
+
+
 
 
 

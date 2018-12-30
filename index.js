@@ -85,7 +85,10 @@ function handleMapButtonClick(eBirdData) {
   console.log('handle map button click')
   $('#js-results-list').unbind('click').on('click', '.map-button', function (event) {
 
-    const observationId = $(this).parent()[0].childNodes[0].data.split(' ')[0];
+    console.log(this);
+
+    const observationId = this.getAttribute("data-id");
+
     const searchForMarkerIndex = markers.findIndex(marker => marker.label == observationId);
 
     if (searchForMarkerIndex === -1) {
@@ -140,9 +143,17 @@ function renderObservationsList(responseJson) {
     $('.js-results-list').append(
       `<li class="sighting">
         <div class="sighting__id-and-comName">
-          <div class="sighting__id">${id}</span>
-          <span class="sighting_comName">${obs.comName}</span>
-        </span><button class="map-button" data-lat=${obs.lat} data-lng=${obs.lng}>location</button><button class="directions-button" data-lat=${obs.lat} data-lng=${obs.lng}> route</button></li>`
+          <span class="sighting__id">${id}</span>
+          <span class="sighting__comName">${obs.comName}</span>
+        </div> 
+          
+        
+        <div class="sighting__marker-and-route">
+          <input type="image" src="../images/iconmonstr-location-1-32.png" class="map-button" data-lat=${obs.lat} data-lng=${obs.lng} data-id=${id} alt="marker icon">
+          
+          <input type="image" src="../images/iconmonstr-map-10-48.png" class="directions-button" data-lat=${obs.lat} data-lng=${obs.lng} alt="map route">
+        </div>
+      </li>`
     );
     id++;
   }
@@ -169,8 +180,10 @@ function generateEbirdRequestUrl(latitude, longitude) {
 }
 
 function getEbirdData(latitude, longitude) {
-
+  console.log('get ebird run');
   const eBirdRequestUrl = generateEbirdRequestUrl(latitude, longitude);
+
+  console.log("ebird request url is: ", eBirdRequestUrl);
 
   fetch(eBirdRequestUrl)
     .then(response => response.json())
@@ -224,6 +237,7 @@ function initMap(center) {
 
 
 function getCoordinatesFromLocation(location) {
+  console.log('get coords run');
   // generate API-friendly url
   const queryParams = `address=${encodeURIComponent(location)}`;
   const searchString = googleGeocodeUrl + queryParams + `&key=${googleApiKey}`;
@@ -256,6 +270,7 @@ function clearPreviousResults() {
 
 function handleLocationSubmit() {
   $('form').on('submit', event => {
+    console.log('handle loc run');
     // submit reloads window by default
     event.preventDefault();
     // clear markers from previous searches

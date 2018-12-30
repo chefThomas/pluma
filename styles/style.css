@@ -262,12 +262,13 @@ body {
   height: 50vh; }
 
 .results-container__sightings {
+  color: #efefef;
   margin: 1rem 0;
-  background-color: #efefef;
   padding: 1rem;
   display: flex;
-  height: 30vh;
-  overflow-y: scroll; }
+  height: 50vh;
+  overflow-y: scroll;
+  border: 1px solid #efefef; }
 
 .header-map {
   padding: 1em; }
@@ -278,3 +279,15 @@ body {
   width: 85%;
   padding: 0;
   overflow-y: scroll; }
+
+.sighting {
+  font-size: 1.5rem;
+  display: inline-block;
+  border: 1px solid #efefef;
+  margin: .5rem;
+  padding: 1rem; }
+  .sighting__marker-and-route {
+    display: flex;
+    justify-content: space-around; }
+    .sighting__marker-and-route .map-button, .sighting__marker-and-route .directions-button {
+      width: 2.75rem; }
