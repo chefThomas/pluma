@@ -179,6 +179,64 @@ body {
     animation-name: fadeInRight;
     animation-duration: 2s; }
 
+.row {
+  max-width: 100rem;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: repeat(12, 6.25%);
+  grid-column-gap: 1%;
+  grid-row-gap: 2%;
+  justify-content: center; }
+  .row .col-4 {
+    grid-column: span 12; }
+
+/* MAP STYLING */
+.results-container__map {
+  display: grid;
+  grid-template-columns: 1fr;
+  width: 100%;
+  padding: 1em;
+  margin-left: auto;
+  margin-right: auto;
+  margin-bottom: 2rem;
+  height: 45vh; }
+
+.results-container .header-map {
+  padding: 1em; }
+
+.results-container .js-results-list {
+  height: 50vh;
+  width: 30rem;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0;
+  overflow-y: scroll;
+  border-radius: 5px;
+  overflow-x: scroll; }
+
+.results-container .sighting {
+  color: inherit;
+  margin-left: auto;
+  margin-right: auto;
+  width: 95%;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: flex-start;
+  border: 1px solid #efefef;
+  padding: 1rem;
+  background-color: #ffffff;
+  flex-wrap: wrap; }
+  .results-container .sighting__id {
+    padding-right: .5rem;
+    display: inline-block; }
+  .results-container .sighting__comName {
+    padding-right: .5rem;
+    display: inline-block; }
+  .results-container .sighting .map-button {
+    position: relative;
+    width: 3rem;
+    display: block; }
+
 .section-search {
   margin-top: 14rem;
   background-image: linear-gradient(to bottom right, #0c2461, #4a69bd); }
@@ -238,43 +296,3 @@ body {
     background-color: #5173a5; }
   #submit-button:active {
     box-shadow: inset 0px 1px 3px 2px rgba(0, 0, 0, 0.2); }
-
-.row {
-  max-width: 100rem;
-  margin: 0 auto;
-  display: grid;
-  grid-template-columns: repeat(12, 6.25%);
-  grid-column-gap: 1%;
-  grid-row-gap: 2%;
-  justify-content: center; }
-  .row .col-4 {
-    grid-column: span 12; }
-
-/* MAP STYLING */
-.results-container__map {
-  display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
-  padding: 1em;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2rem;
-  height: 50vh; }
-
-.results-container__sightings {
-  margin: 1rem 0;
-  background-color: #efefef;
-  padding: 1rem;
-  display: flex;
-  height: 30vh;
-  overflow-y: scroll; }
-
-.header-map {
-  padding: 1em; }
-
-.results-list {
-  margin-left: auto;
-  margin-right: auto;
-  width: 85%;
-  padding: 0;
-  overflow-y: scroll; }

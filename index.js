@@ -36,8 +36,8 @@ function getDirections(origin, destination) {
 
 
 function handleDirectionsButtonClick() {
-  $('#js-results-list').on('click', '.directions-button', function (event) {
-
+  $('.results-container').on('click', '.directions-button', function (event) {
+    console.log('dir clicked')
     if (directionsDisplayArr[0]) {
       directionsDisplayArr[0].setMap(null);
       directionsDisplayArr = [];
@@ -85,10 +85,13 @@ function handleMapButtonClick(eBirdData) {
   console.log('handle map button click')
   $('#js-results-list').unbind('click').on('click', '.map-button', function (event) {
 
-    const observationId = $(this).parent()[0].childNodes[0].data.split(' ')[0];
-    const searchForMarkerIndex = markers.findIndex(marker => marker.label == observationId);
+    console.log(this);
 
-    if (searchForMarkerIndex === -1) {
+    const observationId = this.getAttribute("data-id");
+
+    const markerIndex = markers.findIndex(marker => marker.label == observationId);
+
+    if (markerIndex === -1) {
       const lat = parseFloat(this.getAttribute("data-lat"));
       const lng = parseFloat(this.getAttribute("data-lng"));
       const latLng = { lat: lat, lng: lng };
@@ -108,7 +111,9 @@ function handleMapButtonClick(eBirdData) {
       const infoWindowContent = `
       <h3><u>${eBirdData[observationId - 1].comName}</u><h3>
       <p>Location: ${eBirdData[observationId - 1].locName}</p>
-      <p>Date: ${eBirdData[observationId - 1].obsDt}</li>
+      <p>Date: ${eBirdData[observationId - 1].obsDt}</p>
+    
+      <input type="image" class="directions-button" src="../images/infowindow-route.png"  data-lat=${lat} data-lng=${lng} alt="map route">
       `;
 
       marker.addListener('click', function () {
@@ -121,8 +126,8 @@ function handleMapButtonClick(eBirdData) {
 
     } else {
       // removes marker from map and marker array
-      markers[searchForMarkerIndex].setMap(null);
-      markers.splice(searchForMarkerIndex, 1);
+      markers[markerIndex].setMap(null);
+      markers.splice(markerIndex, 1);
       console.log(markers);
     }
     markers.forEach(marker => marker.setMap(map));
@@ -139,10 +144,13 @@ function renderObservationsList(responseJson) {
   for (let obs of responseJson) {
     $('.js-results-list').append(
       `<li class="sighting">
-        <div class="sighting__id-and-comName">
-          <div class="sighting__id">${id}</span>
-          <span class="sighting_comName">${obs.comName}</span>
-        </span><button class="map-button" data-lat=${obs.lat} data-lng=${obs.lng}>location</button><button class="directions-button" data-lat=${obs.lat} data-lng=${obs.lng}> route</button></li>`
+
+          <span class="sighting__id">${id}</span>
+          <span class="sighting__comName">${obs.comName}</span>
+          
+          <input type="image" class="map-button" src="../images/iconmonstr-location-1-32.png"  data-lat=${obs.lat} data-lng=${obs.lng} data-id=${id} alt="marker icon">
+
+      </li>`
     );
     id++;
   }
@@ -169,8 +177,10 @@ function generateEbirdRequestUrl(latitude, longitude) {
 }
 
 function getEbirdData(latitude, longitude) {
-
+  console.log('get ebird run');
   const eBirdRequestUrl = generateEbirdRequestUrl(latitude, longitude);
+
+  console.log("ebird request url is: ", eBirdRequestUrl);
 
   fetch(eBirdRequestUrl)
     .then(response => response.json())
@@ -224,6 +234,7 @@ function initMap(center) {
 
 
 function getCoordinatesFromLocation(location) {
+  console.log('get coords run');
   // generate API-friendly url
   const queryParams = `address=${encodeURIComponent(location)}`;
   const searchString = googleGeocodeUrl + queryParams + `&key=${googleApiKey}`;
@@ -245,17 +256,22 @@ function getCoordinatesFromLocation(location) {
 
 
 function clearPreviousResults() {
+  console.log('clear previous run');
   // remove markers
   markers.forEach(marker => marker.setMap(null));
   // clear marker array
   markers = [];
   //clear search radius
   searchRadius.setMap(null);
+  //clear results list
+  $('#js-results-list').empty();
+
 }
 
 
 function handleLocationSubmit() {
   $('form').on('submit', event => {
+    console.log('handle loc run');
     // submit reloads window by default
     event.preventDefault();
     // clear markers from previous searches

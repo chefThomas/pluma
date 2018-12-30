@@ -8,37 +8,62 @@
     margin-left: auto;
     margin-right: auto;
     margin-bottom: 2rem;
-    height: 50vh;
+    height: 45vh;
     
   }
 
-  &__sightings {
-    margin: 1rem 0;
-    background-color: $color-white;
-    padding: 1rem;
-    display: flex;
-    height: 30vh;
-    overflow-y: scroll;
-  }
-}
 
+   // <input type="image" class="directions-button" src="../images/iconmonstr-map-10-48.png"  data-lat=${obs.lat} data-lng=${obs.lng} alt="map route">
 
 .header-map {
   padding: 1em;
 }
 
-.results-list {
+.js-results-list {
+  // transform: translateX(-1rem);
+  height: 50vh;
+  width: 30rem;
   margin-left: auto;
   margin-right: auto;
-  width: 85%;
+  // width: 100%;
   padding: 0;
   overflow-y: scroll;
+  border-radius: 5px;
+  overflow-x: scroll;
 }
 
+.sighting {
+  color: inherit;
+  margin-left:auto;
+  margin-right: auto;
+  width: 95%;
+  display: flex;
+  font-size: 1.5rem;
+  justify-content: flex-start;
+  // flex-direction: column;
+  // justify-content: space-between;
+  border: 1px solid $color-white;
+  // border-bottom
+  // margin: .5rem;
+  padding: 1rem;
+  background-color: #ffffff;
+  flex-wrap: wrap;
 
+  &__id {
+    padding-right: .5rem;
+    display: inline-block;
+  }
 
+  &__comName {
+    padding-right: .5rem;
+    display: inline-block;
+  }
 
+  .map-button {
+    position: relative;
+    width: 3rem;
+    display:  block;
 
-
-
-
+  }
+}
+}
