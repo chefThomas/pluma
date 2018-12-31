@@ -3,21 +3,28 @@
 .heading-secondary {
   text-transform: uppercase;
   font-weight: 700;
-  margin-top: 10rem;
+  margin-top: 5rem;
   margin-bottom: 2rem;
   font-size: 2.5rem;
   letter-spacing: .2rem;
-  color: $color-primary-dark;
+  color: $color-primary;
   text-align: center;
 }
 
 .heading-secondary--search {
   text-transform: uppercase;
   font-weight: 400;
-  margin-top: 0rem;
+  margin-top: 5rem;
   margin-bottom: 2rem;
   font-size: 2.5rem;
   letter-spacing: .2rem;
   color: $color-white;
   text-align: center;
+}
+
+
+.header-directions {
+  display: flex;
+  align-items: baseline;
+  justify-content: center;
 }

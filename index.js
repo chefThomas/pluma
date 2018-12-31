@@ -254,6 +254,38 @@ function getCoordinatesFromLocation(location) {
     });
 }
 
+function scrollToDirections() {
+  $('html').animate({
+    scrollTop: $(".directions").offset().top
+  },
+    'slow')
+}
+
+function scrollToBirdSearch() {
+  $('html').animate({
+    scrollTop: $(".heading-secondary--search").offset().top
+  },
+    'slow')
+}
+
+function handleFeatherNav() {
+  // scrolls window to directions from top
+  $('.js-feather-nav').click(function (event) {
+
+    console.log('feather clicked');
+
+    const targetClassArr = event.target.classList;
+
+    const scrollSwitch = Array.from(targetClassArr).find(elem => {
+      return elem === 'logo--white'
+    });
+
+    scrollSwitch ? scrollToDirections() : scrollToBirdSearch();
+  });
+
+
+}
+
 
 function clearPreviousResults() {
   console.log('clear previous run');
@@ -264,15 +296,12 @@ function clearPreviousResults() {
   //clear search radius
   searchRadius.setMap(null);
   //clear results list
-  $('#js-results-list').empty();
-
 }
 
 
 function handleLocationSubmit() {
   $('form').on('submit', event => {
-    console.log('handle loc run');
-    // submit reloads window by default
+
     event.preventDefault();
     $('#js-results-list').empty();
 
@@ -287,3 +316,4 @@ function handleLocationSubmit() {
 
 $(handleLocationSubmit);
 $(handleResetButton);
+$(handleFeatherNav);

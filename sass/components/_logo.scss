@@ -1,9 +1,10 @@
-.logo {
+.logo--white {
   height: 4rem;
   position: absolute;
   left: 50%;
   transform: translate(-95%, 100%);
-  padding-bottom: 0.5rem;  
+  padding-bottom: 0.5rem;
+  z-index: 1;  
 
   &__cursor {
     height: 4rem;
@@ -14,6 +15,23 @@
     padding-bottom: 0.5rem;
     border-bottom: 0.2rem solid $color-white;
 
+    animation: pulse 1.5s infinite;
+    animation-delay: 3.0s;
+  }
+}
+
+.logo--blue {
+    height: 3rem;
+    margin-left: 1.5rem;
+
+
+  &__cursor {
+    // height: 4rem;
+    margin-left: 1.5rem;
+    width: 3rem;
+    transform: translateY(-.5rem);
+    padding-bottom: 0.5rem;
+    border-bottom: 0.2rem solid $color-primary;
     animation: pulse 1.5s infinite;
     animation-delay: 3.0s;
   }
