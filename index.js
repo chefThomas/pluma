@@ -1,5 +1,6 @@
 // let map;
 let searchRadius;
+let markerZindex = 0;
 let markers = [];
 let directionsDisplayArr = [];
 const googleGeocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
@@ -7,14 +8,22 @@ const googleApiKey = 'AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA';
 const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
 
 
-function handleClearMap() {
-  $('form').on('reset', () => {
+function resetMarkerZindex() {
+  markerZindex = 0;
+}
 
-    if (directionsDisplayArr[0]) {
-      directionsDisplayArr[0].setMap(null);
-      directionsDisplayArr = [];
-    }
-    clearPreviousResults();
+function clearRoutes() {
+  if (directionsDisplayArr[0]) {
+    directionsDisplayArr[0].setMap(null);
+    directionsDisplayArr = [];
+  }
+}
+
+function handleClearMapClick() {
+  $('form').on('reset', () => {
+    resetMarkerZindex();
+    clearRoutes();
+    clearMarkers();
   });
 }
 
@@ -108,8 +117,11 @@ function handleMapButtonClick(eBirdData) {
       //create marker
       let marker = new google.maps.Marker({
         position: latLng,
-        label: observationId
+        label: observationId,
+        zIndex: markerZindex
       });
+
+      markerZindex++;
 
       // getWikipediaImage(eBirdData[observationId - 1].comName);
 
@@ -126,6 +138,7 @@ function handleMapButtonClick(eBirdData) {
         new google.maps.InfoWindow({ content: infoWindowContent })
           .open(map, marker);
       });
+
 
       markers.push(marker);
       console.log(markers);
@@ -167,15 +180,23 @@ function generateEbirdRequestUrl(latitude, longitude) {
   const maxResults = $('#max-results').val();
   const userRadiusInput = $('#search-radius').val();
 
+  console.log('max results', maxResults);
+
   let ebirdNearbyUrl = ebirdNearbyUrlBase + `lat=${latitude}&lng=${longitude}`;
 
+
+
+  // if ((maxResults <= 0) || (userRadiusInput <= 0)) {
+  //   alert('max results/search radius must be positive integers');
+  //   return;
+  // }
   // return limit optional. defaults to all 
-  if (maxResults) {
+  if (maxResults > 0) {
     ebirdNearbyUrl += `&maxResults=${maxResults}`;
   }
 
   // defaults to 25km, but can be specified by user
-  if (userRadiusInput) {
+  if (userRadiusInput > 0) {
     ebirdNearbyUrl += `&dist=${userRadiusInput}`;
   }
 
@@ -293,7 +314,7 @@ function handleFeatherNav() {
 }
 
 
-function clearPreviousResults() {
+function clearMarkers() {
 
   console.log('clear results run');
   // remove markers
@@ -320,7 +341,7 @@ function handleLocationSubmit() {
     $('#js-results-list').empty();
 
     // clear markers from previous searches
-    if (markers[0]) { clearPreviousResults() };
+    if (markers[0]) { clearMarkers() };
     // get location text from UI
 
     const location = $('.js-user-input').val();
@@ -334,5 +355,5 @@ function handleLocationSubmit() {
 
 $(loadDefault);
 $(handleLocationSubmit);
-$(handleClearMap);
+$(handleClearMapClick);
 $(handleFeatherNav);
