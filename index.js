@@ -186,10 +186,12 @@ function generateEbirdRequestUrl(latitude, longitude) {
 
 
 
-  // if ((maxResults <= 0) || (userRadiusInput <= 0)) {
-  //   alert('max results/search radius must be positive integers');
-  //   return;
-  // }
+  if ((maxResults < 0) || (userRadiusInput < 0)) {
+    alert('Try a positive integer. Zero yields defaults (all results within 25km radius).');
+
+    return;
+  }
+
   // return limit optional. defaults to all 
   if (maxResults > 0) {
     ebirdNearbyUrl += `&maxResults=${maxResults}`;
