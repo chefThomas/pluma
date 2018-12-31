@@ -7,8 +7,15 @@ const googleApiKey = 'AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA';
 const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
 
 
-function handleResetButton() {
-  $('form').on('click', '#reset-button', clearPreviousResults)
+function handleClearMap() {
+  $('form').on('reset', () => {
+
+    if (directionsDisplayArr[0]) {
+      directionsDisplayArr[0].setMap(null);
+      directionsDisplayArr = [];
+    }
+    clearPreviousResults();
+  });
 }
 
 function getDirections(origin, destination) {
@@ -37,7 +44,7 @@ function getDirections(origin, destination) {
 
 function handleDirectionsButtonClick() {
   $('.results-container').on('click', '.directions-button', function (event) {
-    console.log('dir clicked')
+    console.log('dir icon clicked')
     if (directionsDisplayArr[0]) {
       directionsDisplayArr[0].setMap(null);
       directionsDisplayArr = [];
@@ -56,7 +63,6 @@ function handleDirectionsButtonClick() {
             lat: position.coords.latitude,
             lng: position.coords.longitude
           };
-          console.log('about to call getDir')
           getDirections(origin, destination);
         });
       } else {
@@ -66,27 +72,27 @@ function handleDirectionsButtonClick() {
   });
 }
 
-/// END WORKING ON THIS FUNCTION. NEED TO GET URL OF IMAGE AND PASS TO INFO WINDOW
-function getWikipediaImageUrl(speciesName) {
-  speciesName = 'American Crow';
 
-  const encodeSpeciesName = speciesName.toLowerCase();
-  const wikiRequestUri = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeSpeciesName}&prop=pageimages&format=json&pithumbsize=100&origin=*`;
+// function getWikipediaImageUrl(speciesName) {
+//   speciesName = 'American Crow';
 
-  const jsonResponse = fetch(wikiRequestUri)
-    .then(response => response.json())
-    .then(jsonResponse => {
-      console.log('wiki image fetch', jsonResponse);
-    });
-}
+//   const encodeSpeciesName = speciesName.toLowerCase();
+//   const wikiRequestUri = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeSpeciesName}&prop=pageimages&format=json&pithumbsize=100&origin=*`;
+
+//   const jsonResponse = fetch(wikiRequestUri)
+//     .then(response => response.json())
+//     .then(jsonResponse => {
+//       console.log('wiki image fetch', jsonResponse);
+//     });
+// }
 
 
 function handleMapButtonClick(eBirdData) {
   console.log('handle map button click')
   $('#js-results-list').unbind('click').on('click', '.map-button', function (event) {
 
-    console.log(this);
 
+    // data for marker from ebird
     const observationId = this.getAttribute("data-id");
 
     const markerIndex = markers.findIndex(marker => marker.label == observationId);
@@ -96,7 +102,7 @@ function handleMapButtonClick(eBirdData) {
       const lng = parseFloat(this.getAttribute("data-lng"));
       const latLng = { lat: lat, lng: lng };
 
-      // center new marker on map
+      // center map on marker
       map.panTo(latLng);
 
       //create marker
@@ -288,13 +294,17 @@ function handleFeatherNav() {
 
 
 function clearPreviousResults() {
+
+  console.log('clear results run');
   // remove markers
   markers.forEach(marker => marker.setMap(null));
   // clear marker array
   markers = [];
-  //clear search radius
-  searchRadius.setMap(null);
-  //clear results list
+
+  // if (directionsDisplayArr[0]) {
+  //   directionsDisplayArr[0].setMap(null);
+  //   directionsDisplayArr = [];
+
 }
 
 function loadDefault() {
@@ -324,5 +334,5 @@ function handleLocationSubmit() {
 
 $(loadDefault);
 $(handleLocationSubmit);
-$(handleResetButton);
+$(handleClearMap);
 $(handleFeatherNav);

@@ -104,7 +104,8 @@
                     <div class="form-container">
                         <div class="input-block">
                             <label class="input-label" for="address ">Location</label>
-                            <input id="address" class="js-user-input form__input form__input--location" type="text" placeholder="Seattle" required>
+                            <input id="address" class="js-user-input form__input form__input--location" type="text" onfocus="this.value=''" placeholder="Seattle"
+                                required>
                         </div>
 
                         <div class="input-block">
@@ -120,26 +121,28 @@
 
                         <button type="submit" id="submit-button" class="button" value="submit ">submit</button>
 
+                        <button class="button" type="reset" id="reset-button " value="clear map ">clear map</button>
+
                     </div>
                 </form>
                 <div class="map-and-results-container"></div>
                 <div class="results-container">
+
                     <div class="results-container__map">
                         <div class="map"></div>
                     </div>
-                    <!-- <h2 class="heading-secondary heading-secondary--search">sightings</h2> -->
+
                     <div class="results-container__sightings">
                         <ul id="js-results-list" class="js-results-list">
                         </ul>
                     </div>
+
                 </div>
             </div>
             </div>
             <footer role="contentinfo">
                 credit photos, data, and icons here
             </footer>
-
-            <!-- <button type="reset" id="reset-button " value="clear map ">Clear Map</button> -->
 
             <!-- </div> -->
             <!-- <div class="search">
