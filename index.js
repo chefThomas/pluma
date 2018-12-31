@@ -288,7 +288,6 @@ function handleFeatherNav() {
 
 
 function clearPreviousResults() {
-  console.log('clear previous run');
   // remove markers
   markers.forEach(marker => marker.setMap(null));
   // clear marker array
@@ -298,8 +297,13 @@ function clearPreviousResults() {
   //clear results list
 }
 
+function loadDefault() {
+  getCoordinatesFromLocation('Seattle');
+}
+
 
 function handleLocationSubmit() {
+
   $('form').on('submit', event => {
 
     event.preventDefault();
@@ -308,12 +312,17 @@ function handleLocationSubmit() {
     // clear markers from previous searches
     if (markers[0]) { clearPreviousResults() };
     // get location text from UI
+
     const location = $('.js-user-input').val();
-    // convert text location lat, lng using Google Geolocation API 
+
     getCoordinatesFromLocation(location);
+
+    $('.js-user-input').val().empty();
+
   });
 }
 
+$(loadDefault);
 $(handleLocationSubmit);
 $(handleResetButton);
 $(handleFeatherNav);

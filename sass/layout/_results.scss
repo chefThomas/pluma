@@ -8,16 +8,6 @@
   grid-template-columns: 
   repeat(12, 1fr);
   grid-row-gap: 2rem;
-  // transform: translateX(-2rem);
-  // margin-left: auto;
-  // margin-right: auto;
-  // @media #{$viewport-bp} {
-  //     display: flex;
-  //   }
-
-  // @media #{$viewport-bp} {
-  //  transform: translateX(5);
-  //   }
 
   &__map {
     grid-column: span 12;
@@ -38,10 +28,8 @@
   }
 
   &__sightings {
-    // width: 80%;
-    // margin-left: auto;
-    // margin-right: auto;
-    grid-column: 1 / 13;
+
+    grid-column: span 12;
 
     @media #{$viewport-bp} {
       width: 100%;

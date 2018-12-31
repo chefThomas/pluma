@@ -235,7 +235,7 @@ body {
       height: 100%;
       display: relative; }
   .results-container__sightings {
-    grid-column: 3 / 11; }
+    grid-column: span 12; }
     @media (min-width: 550px) {
       .results-container__sightings {
         width: 100%;
