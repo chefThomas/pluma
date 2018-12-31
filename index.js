@@ -113,7 +113,7 @@ function handleMapButtonClick(eBirdData) {
       <p>Location: ${eBirdData[observationId - 1].locName}</p>
       <p>Date: ${eBirdData[observationId - 1].obsDt}</p>
     
-      <input type="image" class="directions-button" src="../images/infowindow-route.png"  data-lat=${lat} data-lng=${lng} alt="map route">
+      <input type="image" class="directions-button" src="./images/infowindow-route.png"  data-lat=${lat} data-lng=${lng} alt="map route">
       `;
 
       marker.addListener('click', function () {
