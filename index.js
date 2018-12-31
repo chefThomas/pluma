@@ -262,6 +262,9 @@ function initMap(center) {
 }
 
 
+
+
+
 function getCoordinatesFromLocation(location) {
   console.log('get coords run');
   // generate API-friendly url
@@ -273,13 +276,19 @@ function getCoordinatesFromLocation(location) {
     .then(response => response.json())
     .then(json => {
       // pull coordinates from response object
-      const { lat, lng } = json.results[0].geometry.location;
-      // center map on location
-      const mapCenter = { lat: lat, lng: lng };
-      // create map
-      initMap(mapCenter);
-      // get bird observation data from eBird API using coordinates from Google as parameter
-      getEbirdData(lat, lng);
+      console.log('google geocord response json', json);
+      if (json.status === "OK") {
+        const { lat, lng } = json.results[0].geometry.location;
+        // center map on location
+        const mapCenter = { lat: lat, lng: lng };
+        // create map
+        initMap(mapCenter);
+        // get bird observation data from eBird API using coordinates from Google as parameter
+        getEbirdData(lat, lng);
+      } else {
+        alert('Cannot find that location');
+      }
+
     });
 }
 
