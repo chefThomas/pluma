@@ -148,7 +148,7 @@ function renderObservationsList(responseJson) {
           <span class="sighting__id">${id}</span>
           <span class="sighting__comName">${obs.comName}</span>
           
-          <input type="image" class="map-button" src="/images/marker-icon.png"  data-lat=${obs.lat} data-lng=${obs.lng} data-id=${id} alt="marker icon">
+          <input type="image" class="map-button" src="./images/marker-icon.png"  data-lat=${obs.lat} data-lng=${obs.lng} data-id=${id} alt="marker icon">
 
       </li>`
     );
@@ -274,6 +274,8 @@ function handleLocationSubmit() {
     console.log('handle loc run');
     // submit reloads window by default
     event.preventDefault();
+    $('#js-results-list').empty();
+
     // clear markers from previous searches
     if (markers[0]) { clearPreviousResults() };
     // get location text from UI

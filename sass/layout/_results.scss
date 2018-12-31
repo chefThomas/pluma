@@ -21,27 +21,26 @@
 
   &__map {
     grid-column: span 12;
-    height: 35vh;
+    height: 45vh;
 
-    @media (min-width: 600px) { 
-      height: 55vh;
-    }
+    // @media (min-width: 600px) { 
+    //   height: 55vh;
+    // }
 
     @media #{$viewport-bp} {
       height: 85vh;
       grid-column: span 9;
     }
-
     .map {
       height: 100%;
     }
   }
 
   &__sightings {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    grid-column: span 12;
+    // width: 80%;
+    // margin-left: auto;
+    // margin-right: auto;
+    grid-column: 3 / 11;
 
     @media #{$viewport-bp} {
       width: 100%;

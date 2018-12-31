@@ -59,7 +59,7 @@ html {
   @media (min-width: 600px) {
     html {
       font-size: 55%; } }
-  @media (min-width: 750px) {
+  @media (min-width: 550px) {
     html {
       font-size: 65%; } }
 
@@ -77,7 +77,7 @@ body {
   position: relative;
   margin-bottom: 3rem;
   grid-column: span 12; }
-  @media (min-width: 750px) {
+  @media (min-width: 550px) {
     .directions-card {
       grid-column: span 1; } }
   .directions-card__header {
@@ -193,7 +193,7 @@ body {
   grid-column-gap: 1%;
   grid-row-gap: 2%;
   justify-content: center; }
-  @media (min-width: 750px) {
+  @media (min-width: 550px) {
     .top-row {
       grid-template-columns: 1fr 1fr 1fr; } }
 
@@ -208,22 +208,16 @@ body {
   grid-row-gap: 2rem; }
   .results-container__map {
     grid-column: span 12;
-    height: 35vh; }
-    @media (min-width: 600px) {
-      .results-container__map {
-        height: 55vh; } }
-    @media (min-width: 750px) {
+    height: 45vh; }
+    @media (min-width: 550px) {
       .results-container__map {
         height: 85vh;
         grid-column: span 9; } }
     .results-container__map .map {
       height: 100%; }
   .results-container__sightings {
-    width: 80%;
-    margin-left: auto;
-    margin-right: auto;
-    grid-column: span 12; }
-    @media (min-width: 750px) {
+    grid-column: 3 / 11; }
+    @media (min-width: 550px) {
       .results-container__sightings {
         width: 100%;
         grid-column: span 3; } }
@@ -233,7 +227,7 @@ body {
     overflow-y: scroll;
     border-radius: 2px;
     overflow-x: scroll; }
-    @media (min-width: 750px) {
+    @media (min-width: 550px) {
       .results-container .js-results-list {
         height: 85vh; } }
   .results-container .sighting {
@@ -248,7 +242,7 @@ body {
     border: 1px solid #efefef;
     padding: 1rem;
     background-color: #ffffff; }
-    @media (min-width: 750px) {
+    @media (min-width: 550px) {
       .results-container .sighting {
         font-size: 1.25rem; } }
     .results-container .sighting__id {
@@ -261,7 +255,7 @@ body {
       position: relative;
       width: 3rem;
       display: block; }
-      @media (min-width: 750px) {
+      @media (min-width: 550px) {
         .results-container .sighting .map-button {
           width: 2rem; } }
 
