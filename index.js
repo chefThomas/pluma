@@ -148,7 +148,7 @@ function renderObservationsList(responseJson) {
           <span class="sighting__id">${id}</span>
           <span class="sighting__comName">${obs.comName}</span>
           
-          <input type="image" class="map-button" src="../images/iconmonstr-location-1-32.png"  data-lat=${obs.lat} data-lng=${obs.lng} data-id=${id} alt="marker icon">
+          <input type="image" class="map-button" src="./images/iconmonstr-location-1-32.png"  data-lat=${obs.lat} data-lng=${obs.lng} data-id=${id} alt="marker icon">
 
       </li>`
     );
