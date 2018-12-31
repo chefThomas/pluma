@@ -55,7 +55,13 @@ section {
 
 /* html is root. Default font-size is */
 html {
-  font-size: 62.5%; }
+  font-size: 50%; }
+  @media (min-width: 600px) {
+    html {
+      font-size: 55%; } }
+  @media (min-width: 750px) {
+    html {
+      font-size: 65%; } }
 
 body {
   font-family: 'Lato', sans-serif;
@@ -69,7 +75,11 @@ body {
   background-color: white;
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   position: relative;
-  margin-bottom: 3rem; }
+  margin-bottom: 3rem;
+  grid-column: span 12; }
+  @media (min-width: 750px) {
+    .directions-card {
+      grid-column: span 1; } }
   .directions-card__header {
     color: #efefef;
     text-align: center;
@@ -139,9 +149,6 @@ body {
     animation: pulse 1.5s infinite;
     animation-delay: 3.0s; }
 
-.sightings__item {
-  display: inline-block; }
-
 .header--splash {
   height: 95vh;
   background-image: linear-gradient(to bottom, rgba(12, 36, 97, 0.8), rgba(74, 105, 189, 0.8)), url("../images/ray-hennessy-126085-unsplash-min.jpg");
@@ -179,76 +186,96 @@ body {
     animation-name: fadeInRight;
     animation-duration: 2s; }
 
-.row {
-  max-width: 100rem;
+.top-row {
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(12, 6.25%);
   grid-column-gap: 1%;
   grid-row-gap: 2%;
   justify-content: center; }
-  .row .col-4 {
-    grid-column: span 12; }
+  @media (min-width: 750px) {
+    .top-row {
+      grid-template-columns: 1fr 1fr 1fr; } }
 
 /* MAP STYLING */
-.results-container__map {
+.map-and-results-container {
+  margin-left: auto;
+  margin-right: auto; }
+
+.results-container {
   display: grid;
-  grid-template-columns: 1fr;
-  width: 100%;
-  padding: 1em;
-  margin-left: auto;
-  margin-right: auto;
-  margin-bottom: 2rem;
-  height: 45vh; }
-
-.results-container .header-map {
-  padding: 1em; }
-
-.results-container .js-results-list {
-  height: 50vh;
-  width: 30rem;
-  margin-left: auto;
-  margin-right: auto;
-  padding: 0;
-  overflow-y: scroll;
-  border-radius: 5px;
-  overflow-x: scroll; }
-
-.results-container .sighting {
-  color: inherit;
-  margin-left: auto;
-  margin-right: auto;
-  width: 95%;
-  display: flex;
-  font-size: 1.5rem;
-  justify-content: flex-start;
-  border: 1px solid #efefef;
-  padding: 1rem;
-  background-color: #ffffff;
-  flex-wrap: wrap; }
-  .results-container .sighting__id {
-    padding-right: .5rem;
-    display: inline-block; }
-  .results-container .sighting__comName {
-    padding-right: .5rem;
-    display: inline-block; }
-  .results-container .sighting .map-button {
-    position: relative;
-    width: 3rem;
-    display: block; }
+  grid-template-columns: repeat(12, 1fr);
+  grid-row-gap: 2rem; }
+  .results-container__map {
+    grid-column: span 12;
+    height: 35vh; }
+    @media (min-width: 600px) {
+      .results-container__map {
+        height: 55vh; } }
+    @media (min-width: 750px) {
+      .results-container__map {
+        height: 85vh;
+        grid-column: span 9; } }
+    .results-container__map .map {
+      height: 100%; }
+  .results-container__sightings {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-column: span 12; }
+    @media (min-width: 750px) {
+      .results-container__sightings {
+        width: 100%;
+        grid-column: span 3; } }
+  .results-container .js-results-list {
+    height: 50vh;
+    padding: 0;
+    overflow-y: scroll;
+    border-radius: 2px;
+    overflow-x: scroll; }
+    @media (min-width: 750px) {
+      .results-container .js-results-list {
+        height: 85vh; } }
+  .results-container .sighting {
+    color: inherit;
+    margin-left: auto;
+    margin-right: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.5rem;
+    justify-content: flex-start;
+    border: 1px solid #efefef;
+    padding: 1rem;
+    background-color: #ffffff; }
+    @media (min-width: 750px) {
+      .results-container .sighting {
+        font-size: 1.25rem; } }
+    .results-container .sighting__id {
+      padding-right: .5rem;
+      display: inline-block; }
+    .results-container .sighting__comName {
+      padding-right: .5rem;
+      display: inline-block; }
+    .results-container .sighting .map-button {
+      position: relative;
+      width: 3rem;
+      display: block; }
+      @media (min-width: 750px) {
+        .results-container .sighting .map-button {
+          width: 2rem; } }
 
 .section-search {
   margin-top: 14rem;
   background-image: linear-gradient(to bottom right, #0c2461, #4a69bd); }
   .section-search div.search-row {
-    display: block;
     padding: 3rem 3rem; }
     .section-search div.search-row .form {
       display: flex;
       justify-content: flex-start; }
       .section-search div.search-row .form .form-container {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         width: 100%;
         flex-wrap: wrap; }
         .section-search div.search-row .form .form-container .input-block {
@@ -269,8 +296,6 @@ body {
         margin-top: 1rem;
         margin-bottom: 1rem;
         padding: 1rem 1rem; }
-      .section-search div.search-row .form__input--location {
-        width: 25rem; }
       .section-search div.search-row .form__input--max-results {
         width: 9rem; }
       .section-search div.search-row .form__input--search-radius {

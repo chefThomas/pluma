@@ -1,53 +1,83 @@
 /* MAP STYLING */
+.map-and-results-container {
+  margin-left: auto;
+  margin-right: auto;
+}
 .results-container {
+  display: grid;
+  grid-template-columns: 
+  repeat(12, 1fr);
+  grid-row-gap: 2rem;
+  // transform: translateX(-2rem);
+  // margin-left: auto;
+  // margin-right: auto;
+  // @media #{$viewport-bp} {
+  //     display: flex;
+  //   }
+
+  // @media #{$viewport-bp} {
+  //  transform: translateX(5);
+  //   }
+
   &__map {
-    display: grid;
-    grid-template-columns:1fr;
-    width: 100%;
-    padding: 1em;
-    margin-left: auto;
-    margin-right: auto;
-    margin-bottom: 2rem;
-    height: 45vh;
-    
+    grid-column: span 12;
+    height: 35vh;
+
+    @media (min-width: 600px) { 
+      height: 55vh;
+    }
+
+    @media #{$viewport-bp} {
+      height: 85vh;
+      grid-column: span 9;
+    }
+
+    .map {
+      height: 100%;
+    }
   }
 
+  &__sightings {
+    width: 50%;
+    margin-left: auto;
+    margin-right: auto;
+    grid-column: span 12;
 
-   // <input type="image" class="directions-button" src="../images/iconmonstr-map-10-48.png"  data-lat=${obs.lat} data-lng=${obs.lng} alt="map route">
-
-.header-map {
-  padding: 1em;
-}
+    @media #{$viewport-bp} {
+      width: 100%;
+      grid-column: span 3;
+    }
+  }
 
 .js-results-list {
   // transform: translateX(-1rem);
   height: 50vh;
-  width: 30rem;
-  margin-left: auto;
-  margin-right: auto;
-  // width: 100%;
   padding: 0;
   overflow-y: scroll;
-  border-radius: 5px;
+  border-radius: 2px;
   overflow-x: scroll;
-}
+
+  @media #{$viewport-bp} {
+    height: 85vh;
+    }
+  }
 
 .sighting {
   color: inherit;
   margin-left:auto;
   margin-right: auto;
-  width: 95%;
+  width: 100%;
   display: flex;
+  flex-wrap: wrap;
   font-size: 1.5rem;
   justify-content: flex-start;
-  // flex-direction: column;
-  // justify-content: space-between;
   border: 1px solid $color-white;
-  // border-bottom
-  // margin: .5rem;
   padding: 1rem;
   background-color: #ffffff;
-  flex-wrap: wrap;
+
+  @media #{$viewport-bp} {
+    font-size: 1.25rem;
+    }
 
   &__id {
     padding-right: .5rem;
@@ -64,6 +94,9 @@
     width: 3rem;
     display:  block;
 
+    @media #{$viewport-bp} {
+      width: 2rem;
+    } 
   }
 }
 }

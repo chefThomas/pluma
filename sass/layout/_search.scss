@@ -3,19 +3,15 @@
   background-image: linear-gradient(to bottom right, $color-primary-dark, $color-primary-light);
 
   div.search-row {
-    display: block;
-    
-
     padding: 3rem 3rem;
 
- 
     .form {
       display: flex;
       justify-content: flex-start;
 
       .form-container {
         display: flex;
-        justify-content: space-evenly;
+        justify-content: center;
         // border: 1px solid black;
         width: 100%;
         flex-wrap: wrap;
@@ -48,7 +44,7 @@
       }
 
       &__input--location {
-        width: 25rem;
+        
       }
       
       &__input--max-results {

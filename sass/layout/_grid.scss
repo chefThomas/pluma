@@ -1,5 +1,5 @@
-.row {
-  max-width: $row-max-width;
+.top-row {
+  // max-width: $row-max-width;
   margin: 0 auto;
   display: grid;
   grid-template-columns: repeat(12, 6.25%);
@@ -7,10 +7,9 @@
   grid-row-gap: 2%;
   justify-content: center;
 
-  .col-4 {
-  grid-column: span 12;
-}
-
+    @media #{$viewport-bp} {
+    grid-template-columns: 1fr 1fr 1fr;
+  }
 }
 
 

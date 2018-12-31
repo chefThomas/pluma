@@ -12,7 +12,7 @@ function handleResetButton() {
 }
 
 function getDirections(origin, destination) {
-  directionsDisplay = new google.maps.DirectionsRenderer;
+  directionsDisplay = new google.maps.DirectionsRenderer({ suppressMarkers: true });
   directionsService = new google.maps.DirectionsService;
   console.log('get direx run');
   directionsDisplay.setMap(map);

@@ -6,6 +6,12 @@
   box-shadow: 0 1.5rem 4rem rgba(0, 0, 0, 0.15);
   position: relative;
   margin-bottom: 3rem;
+
+  // RESPONSIVE 
+  grid-column: span 12;
+  @media #{$viewport-bp} {
+    grid-column: span 1;
+  }
   
   &__header {
     color: $color-white;
