@@ -314,7 +314,7 @@ body {
       .section-search div.search-row .form__input--search-radius {
         width: 9rem; }
 
-#submit-button {
+.button {
   color: #efefef;
   width: 11rem;
   font-family: inherit;
@@ -324,13 +324,15 @@ body {
   margin-top: 1rem;
   margin-bottom: 3rem;
   border-radius: 1px;
+  margin-right: 1rem;
+  font-size: 1.3rem;
   height: 3.5rem;
   box-shadow: none;
   border: 1px solid #efefef;
   background-color: #4664b7;
   transform: translateY(1rem); }
-  #submit-button:hover {
+  .button:hover {
     cursor: pointer;
     background-color: #5173a5; }
-  #submit-button:active {
+  .button:active {
     box-shadow: inset 0px 1px 3px 2px rgba(0, 0, 0, 0.2); }

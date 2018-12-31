@@ -58,7 +58,7 @@
   }
 }
 
-#submit-button {
+.button {
   color: $color-white;
   width: 11rem;
   font-family: inherit;
@@ -68,6 +68,8 @@
   margin-top: 1rem;
   margin-bottom: 3rem;
   border-radius: 1px;
+  margin-right: 1rem;
+  font-size: 1.3rem;
   height: 3.5rem;
   box-shadow: none;
   border: 1px solid $color-white;
