@@ -16,8 +16,8 @@
     // @media (min-width: 600px) { 
     //   height: 55vh;
     // }
-
-    @media #{$viewport-bp} {
+      
+    @media (min-width: 650px) {
       height: 85vh;
       grid-column: span 9;
     }
@@ -31,7 +31,7 @@
 
     grid-column: span 12;
 
-    @media #{$viewport-bp} {
+    @media (min-width: 650px) {
       width: 100%;
       grid-column: span 3;
     }
@@ -45,46 +45,47 @@
   border-radius: 2px;
   overflow-x: scroll;
 
-  @media #{$viewport-bp} {
+  @media (min-width: 650px) {
     height: 85vh;
     }
   }
 
-.sighting {
-  color: inherit;
-  margin-left:auto;
-  margin-right: auto;
-  width: 100%;
-  display: flex;
-  flex-wrap: wrap;
-  font-size: 1.5rem;
-  justify-content: flex-start;
-  border: 1px solid $color-white;
-  padding: 1rem;
-  background-color: #ffffff;
+  .sighting {
+    color: inherit;
+    margin-left:auto;
+    margin-right: auto;
+    width: 100%;
+    display: flex;
+    flex-wrap: wrap;
+    font-size: 1.5rem;
+    justify-content: flex-start;
+    border: 1px solid $color-white;
+    padding: 1rem;
+    background-color: #ffffff;
 
-  @media #{$viewport-bp} {
-    font-size: 1.25rem;
+    @media (min-width: 700px) {
+      font-size: 1.25rem;
+      }
+    
+    &__id-and-comName {
+      display: flex;
+      align-items: center;
+      text-align: center;
     }
 
-  &__id {
-    padding-right: .5rem;
-    display: inline-block;
-  }
+    &__id {
+      margin-right: .5rem;
+      // display: inline-block;
+      text-align: center;
+      font-size: 2rem;
+    }
 
-  &__comName {
-    padding-right: .5rem;
-    display: inline-block;
-  }
+    &__comName {
+      padding-right: 2rem;
+      // display: inline-block;
+      font-size: 2rem;
+    }
 
-  .map-button {
-    position: relative;
-    width: 3rem;
-    display:  block;
-
-    @media #{$viewport-bp} {
-      width: 2rem;
-    } 
+    
   }
-}
 }

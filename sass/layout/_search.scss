@@ -58,45 +58,5 @@
   }
 }
 
-.button {
-  color: $color-white;
-  width: 11rem;
-  font-family: inherit;
-  text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: .2rem;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  border-radius: 1px;
-  margin-right: 1rem;
-  font-size: 1.3rem;
-  height: 3.5rem;
-  box-shadow: none;
-  border: 1px solid $color-white;
-  // background-color: #162f70;
-  background-color: #4664b7;
-  transform: translateY(1rem);
-
-  &:hover {
-    cursor: pointer;
-    background-color: #5173a5;
-  }
-
-  &:active {
-    box-shadow: inset 0px 1px 3px 2px rgba(0, 0, 0, 0.2);
-  }
-}
-
-
-
-
-
-
-
-
-
-
-
-
 
 

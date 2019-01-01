@@ -52,7 +52,7 @@ function getDirections(origin, destination) {
 
 
 function handleDirectionsButtonClick() {
-  $('.results-container').on('click', '.directions-button', function (event) {
+  $('.results-container').on('click', '.js-directions-button', function (event) {
     console.log('dir icon clicked')
     if (directionsDisplayArr[0]) {
       directionsDisplayArr[0].setMap(null);
@@ -98,7 +98,7 @@ function handleDirectionsButtonClick() {
 
 function handleMapButtonClick(eBirdData) {
   console.log('handle map button click')
-  $('#js-results-list').unbind('click').on('click', '.map-button', function (event) {
+  $('#js-results-list').unbind('click').on('click', '.js-map-button', function (event) {
 
 
     // data for marker from ebird
@@ -127,11 +127,9 @@ function handleMapButtonClick(eBirdData) {
 
       // info window 
       const infoWindowContent = `
-      <h3><u>${eBirdData[observationId - 1].comName}</u><h3>
+      <h3>${eBirdData[observationId - 1].comName}<h3>
       <p>Location: ${eBirdData[observationId - 1].locName}</p>
       <p>Date: ${eBirdData[observationId - 1].obsDt}</p>
-    
-      <input type="image" class="directions-button" src="./images/infowindow-route.png"  data-lat=${lat} data-lng=${lng} alt="map route">
       `;
 
       marker.addListener('click', function () {
@@ -163,12 +161,15 @@ function renderObservationsList(responseJson) {
   for (let obs of responseJson) {
     $('.js-results-list').append(
       `<li class="sighting">
-
-          <span class="sighting__id">${id}</span>
+          <div class="sighting__id-and-comName">
+          <span class="sighting__id">${id}--</span>
           <span class="sighting__comName">${obs.comName}</span>
+          </div>
           
-          <input type="image" class="map-button" src="./images/marker-icon.png"  data-lat=${obs.lat} data-lng=${obs.lng} data-id=${id} alt="marker icon">
-
+          <div class="sighting__button-container">
+          <button class="button js-map-button"  data-lat=${obs.lat} data-lng=${obs.lng} data-id=${id}>map</button>
+          <button class="button js-directions-button" data-lat=${obs.lat} data-lng=${obs.lng}>route
+          </div>
       </li>`
     );
     id++;
@@ -358,8 +359,6 @@ function handleLocationSubmit() {
     const location = $('.js-user-input').val();
 
     getCoordinatesFromLocation(location);
-
-    $('.js-user-input').val().empty();
 
   });
 }

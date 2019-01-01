@@ -1,0 +1,54 @@
+.button {
+  color: $color-white;
+  width: 11rem;
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: .2rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  border-radius: 1px;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  height: 3.5rem;
+  box-shadow: none;
+  border: 1px solid $color-white;
+  background-color: #4664b7;
+  transform: translateY(1rem);
+
+  &__demo {
+  position: relative;
+   display: inline-block;
+  //  vertical-align: center;
+  //  transform: translateY(-.5rem);
+
+  }
+
+  &:hover {
+    cursor: pointer;
+    background-color: #5173a5;
+  }
+
+  &:active {
+    box-shadow: inset 0px 1px 3px 2px rgba(0, 0, 0, 0.2);
+  }
+
+  &__reset-button {
+    background-color: #d9534f;
+  }
+}
+
+.js-map-button {
+  font-size: 1.5rem;
+  margin-bottom: 0;
+}
+
+.js-directions-button {
+  font-size: 1.5rem;
+}
+
+span.demo__text {
+  position: absolute;
+  transform: translateY(60%);
+  transform: translateX(-50%);
+}
