@@ -22,23 +22,23 @@ Google Directions <br>
 
 eBird
 
-##Screenshots
+## Screenshots
 
-###Landing screen
+### Landing screen
 Clicking on the feather icon scrolls to directions section.<br>
 ![Landing screen](/screenshots/landing-screen-mobile.png) 
 
 
-###How-to
+### How-to
 Direction cards provide information on search parameters.<br>
 ![Directions](/screenshots/directions-desktop.png) <br>
 
-###Results
-Third result has been mapped and the rendered marker has been clicked on to reveal an informational window with species name, location info and date of sighting.<br>
+### Results
+Third result mapped and rendered marker clicked on to reveal an informational window with species name, location info and date of sighting.<br>
 ![Results](/screenshots/results-desktop.png)
 
 
-###Mobile-first design
-A view of the entire app on iPhone 6/7/8
+### Mobile-first design
+A view of the entire app on iPhone 6/7/8 <br>
 ![Responsive design](/screenshots/full-page-mobile.png)
 
