@@ -6,7 +6,7 @@ let directionsDisplayArr = [];
 const googleGeocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
 const googleApiKey = 'AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA';
 const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
-
+let runScrollToResults = false;
 
 function resetMarkerZindex() {
   markerZindex = 0;
@@ -151,6 +151,15 @@ function handleMapButtonClick(eBirdData) {
   });
 }
 
+
+function scrollToResults() {
+  //scrolls to top of results after sighting list generated
+  $('html').animate({
+    scrollTop: $(".js-results-list").offset().top
+  },
+    'slow');
+}
+
 function renderObservationsList(responseJson) {
   console.log("renderObs run and ebird resp check, ", responseJson);
   // remove previous results
@@ -173,6 +182,12 @@ function renderObservationsList(responseJson) {
       </li>`
     );
     id++;
+  }
+
+  if (runScrollToResults === true) {
+    scrollToResults();
+  } else {
+    runScrollToResults = true;
   }
 }
 
@@ -222,7 +237,6 @@ function getEbirdData(latitude, longitude) {
       handleMapButtonClick(jsonResponse);
       // 
       handleDirectionsButtonClick(jsonResponse);
-
     });
 }
 
@@ -286,6 +300,8 @@ function getCoordinatesFromLocation(location) {
         initMap(mapCenter);
         // get bird observation data from eBird API using coordinates from Google as parameter
         getEbirdData(lat, lng);
+
+        // scroll viewport to top of results list
       } else {
         alert('Cannot find that location');
       }
