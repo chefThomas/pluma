@@ -81,21 +81,6 @@ function handleDirectionsButtonClick() {
   });
 }
 
-
-// function getWikipediaImageUrl(speciesName) {
-//   speciesName = 'American Crow';
-
-//   const encodeSpeciesName = speciesName.toLowerCase();
-//   const wikiRequestUri = `https://en.wikipedia.org/w/api.php?action=query&titles=${encodeSpeciesName}&prop=pageimages&format=json&pithumbsize=100&origin=*`;
-
-//   const jsonResponse = fetch(wikiRequestUri)
-//     .then(response => response.json())
-//     .then(jsonResponse => {
-//       console.log('wiki image fetch', jsonResponse);
-//     });
-// }
-
-
 function handleMapButtonClick(eBirdData) {
   console.log('handle map button click')
   $('#js-results-list').unbind('click').on('click', '.js-map-button', function (event) {
@@ -122,8 +107,6 @@ function handleMapButtonClick(eBirdData) {
       });
 
       markerZindex++;
-
-      // getWikipediaImage(eBirdData[observationId - 1].comName);
 
       // info window 
       const infoWindowContent = `

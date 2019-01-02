@@ -71,7 +71,7 @@ body {
   width: 11rem;
   font-family: inherit;
   text-transform: uppercase;
-  font-weight: 400;
+  font-weight: 600;
   letter-spacing: .2rem;
   margin-top: 1rem;
   margin-bottom: 3rem;
@@ -83,9 +83,6 @@ body {
   border: 1px solid #efefef;
   background-color: #4664b7;
   transform: translateY(1rem); }
-  .button__demo {
-    position: relative;
-    display: inline-block; }
   .button:hover {
     cursor: pointer;
     background-color: #5173a5; }
