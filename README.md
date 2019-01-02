@@ -10,7 +10,7 @@ Pluma provides access to the eBird database in an intuitive way that allows user
 
 Results are returned as a list of sightings that users selectively map and draw routes to from their own location. Clickable markers on the map provide additional info on location as well as sighting date. 
 
-Pluma provides guidance to users who aim to view specific species in the field. This function is particularly useful for travelling users with limited time at a given location. Speaking from my own perspective as a birder, it's also simply fun to see what birders in exotic locations are viewing. 
+Pluma allows users to see what bird species have been viewed in different areas, thus increasing their chance of observing novel species in the field. This function is particularly useful for travelling users with limited time at a location. Speaking from my own perspective as a birder, it's also simply fun to see what birds are seen in exotic locations. 
 
 ## Technology
 Pluma was built with HTML, CSS/Sass, Javascript, and jQuery
