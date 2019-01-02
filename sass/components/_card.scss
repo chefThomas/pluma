@@ -9,7 +9,7 @@
 
   // RESPONSIVE 
   grid-column: span 12;
-  @media #{$viewport-bp} {
+  @media (min-width: 800px) {
     grid-column: span 1;
   }
   
@@ -49,12 +49,12 @@
 
   &__body {
     padding: 1rem 3rem;
-    font-size: 1.5rem;
+    font-size: 2rem;
 
     ul li {
       text-align: center;
       list-style: none;
-      font-size: 1.5rem;
+      font-size: 2rem;
       padding: 1rem;
 
       &:not(:last-child) {

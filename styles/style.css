@@ -59,15 +59,52 @@ html {
   @media (min-width: 600px) {
     html {
       font-size: 55%; } }
-  @media (min-width: 550px) {
-    html {
-      font-size: 65%; } }
 
 body {
   font-family: 'Lato', sans-serif;
   font-weight: 400;
   line-height: 1.7;
   color: #777; }
+
+.button {
+  color: #efefef;
+  width: 11rem;
+  font-family: inherit;
+  text-transform: uppercase;
+  font-weight: 400;
+  letter-spacing: .2rem;
+  margin-top: 1rem;
+  margin-bottom: 3rem;
+  border-radius: 1px;
+  margin-right: 1rem;
+  font-size: 1.5rem;
+  height: 3.5rem;
+  box-shadow: none;
+  border: 1px solid #efefef;
+  background-color: #4664b7;
+  transform: translateY(1rem); }
+  .button__demo {
+    position: relative;
+    display: inline-block; }
+  .button:hover {
+    cursor: pointer;
+    background-color: #5173a5; }
+  .button:active {
+    box-shadow: inset 0px 1px 3px 2px rgba(0, 0, 0, 0.2); }
+  .button__reset-button {
+    background-color: #d9534f; }
+
+.js-map-button {
+  font-size: 1.5rem;
+  margin-bottom: 0; }
+
+.js-directions-button {
+  font-size: 1.5rem; }
+
+span.demo__text {
+  position: absolute;
+  transform: translateY(60%);
+  transform: translateX(-50%); }
 
 .directions-card {
   height: auto;
@@ -77,7 +114,7 @@ body {
   position: relative;
   margin-bottom: 3rem;
   grid-column: span 12; }
-  @media (min-width: 550px) {
+  @media (min-width: 800px) {
     .directions-card {
       grid-column: span 1; } }
   .directions-card__header {
@@ -103,11 +140,11 @@ body {
     padding: 1rem 1.5rem; }
   .directions-card__body {
     padding: 1rem 3rem;
-    font-size: 1.5rem; }
+    font-size: 2rem; }
     .directions-card__body ul li {
       text-align: center;
       list-style: none;
-      font-size: 1.5rem;
+      font-size: 2rem;
       padding: 1rem; }
       .directions-card__body ul li:not(:last-child) {
         border-bottom: 1px solid #d3d3d3; }
@@ -227,7 +264,7 @@ body {
   .results-container__map {
     grid-column: span 12;
     height: 45vh; }
-    @media (min-width: 550px) {
+    @media (min-width: 650px) {
       .results-container__map {
         height: 85vh;
         grid-column: span 9; } }
@@ -236,7 +273,7 @@ body {
       display: relative; }
   .results-container__sightings {
     grid-column: span 12; }
-    @media (min-width: 550px) {
+    @media (min-width: 650px) {
       .results-container__sightings {
         width: 100%;
         grid-column: span 3; } }
@@ -246,7 +283,7 @@ body {
     overflow-y: scroll;
     border-radius: 2px;
     overflow-x: scroll; }
-    @media (min-width: 550px) {
+    @media (min-width: 650px) {
       .results-container .js-results-list {
         height: 85vh; } }
   .results-container .sighting {
@@ -261,22 +298,20 @@ body {
     border: 1px solid #efefef;
     padding: 1rem;
     background-color: #ffffff; }
-    @media (min-width: 550px) {
+    @media (min-width: 700px) {
       .results-container .sighting {
         font-size: 1.25rem; } }
+    .results-container .sighting__id-and-comName {
+      display: flex;
+      align-items: center;
+      text-align: center; }
     .results-container .sighting__id {
-      padding-right: .5rem;
-      display: inline-block; }
+      margin-right: .5rem;
+      text-align: center;
+      font-size: 2rem; }
     .results-container .sighting__comName {
-      padding-right: .5rem;
-      display: inline-block; }
-    .results-container .sighting .map-button {
-      position: relative;
-      width: 3rem;
-      display: block; }
-      @media (min-width: 550px) {
-        .results-container .sighting .map-button {
-          width: 2rem; } }
+      padding-right: 2rem;
+      font-size: 2rem; }
 
 .section-search {
   margin-top: 8rem;
@@ -313,26 +348,3 @@ body {
         width: 9rem; }
       .section-search div.search-row .form__input--search-radius {
         width: 9rem; }
-
-.button {
-  color: #efefef;
-  width: 11rem;
-  font-family: inherit;
-  text-transform: uppercase;
-  font-weight: 400;
-  letter-spacing: .2rem;
-  margin-top: 1rem;
-  margin-bottom: 3rem;
-  border-radius: 1px;
-  margin-right: 1rem;
-  font-size: 1.3rem;
-  height: 3.5rem;
-  box-shadow: none;
-  border: 1px solid #efefef;
-  background-color: #4664b7;
-  transform: translateY(1rem); }
-  .button:hover {
-    cursor: pointer;
-    background-color: #5173a5; }
-  .button:active {
-    box-shadow: inset 0px 1px 3px 2px rgba(0, 0, 0, 0.2); }
