@@ -63,8 +63,6 @@ function handleDirectionsButtonClick() {
 
       const destination = { lat: lat, lng: lng };
 
-      console.log('destinatoin in hand dir button ', destination)
-
       if (navigator.geolocation) {
         console.log('in nav.geo')
         navigator.geolocation.getCurrentPosition(function (position) {
@@ -110,7 +108,7 @@ function handleMapButtonClick(eBirdData) {
 
       // info window 
       const infoWindowContent = `
-      <h3>${eBirdData[observationId - 1].comName}<h3>
+      <header><h3>${eBirdData[observationId - 1].comName}<h3></header>
       <p>Location: ${eBirdData[observationId - 1].locName}</p>
       <p>Date: ${eBirdData[observationId - 1].obsDt}</p>
       `;
@@ -154,7 +152,7 @@ function renderObservationsList(responseJson) {
     $('.js-results-list').append(
       `<li class="sighting">
           <div class="sighting__id-and-comName">
-          <span class="sighting__id">${id}--</span>
+          <span class="sighting__id">${id}</span>
           <span class="sighting__comName">${obs.comName}</span>
           </div>
           
@@ -205,15 +203,11 @@ function generateEbirdRequestUrl(latitude, longitude) {
 }
 
 function getEbirdData(latitude, longitude) {
-  console.log('get ebird run');
   const eBirdRequestUrl = generateEbirdRequestUrl(latitude, longitude);
-
-  console.log("ebird request url is: ", eBirdRequestUrl);
 
   fetch(eBirdRequestUrl)
     .then(response => response.json())
     .then(jsonResponse => {
-      console.log('ebird fetch', jsonResponse);
       // generate results list
       renderObservationsList(jsonResponse);
       // create/remove markers from map
@@ -237,8 +231,6 @@ function initMap(center) {
   if (!userRadiusInput) { userRadiusInput = 25; }
 
   let zoom = calculateZoom(userRadiusInput);
-
-  console.log('calc zoom', zoom);
 
   map = new google.maps.Map(document.querySelector('.map'), {
     zoom: zoom,
@@ -288,7 +280,6 @@ function getCoordinatesFromLocation(location) {
       } else {
         alert('Cannot find that location');
       }
-
     });
 }
 
@@ -318,6 +309,7 @@ function handleFeatherNav() {
       return elem === 'logo--white'
     });
 
+    // if first search, icon
     scrollSwitch ? scrollToDirections() : scrollToBirdSearch();
   });
 
@@ -326,20 +318,14 @@ function handleFeatherNav() {
 
 
 function clearMarkers() {
-
-  console.log('clear results run');
   // remove markers
   markers.forEach(marker => marker.setMap(null));
   // clear marker array
   markers = [];
-
-  // if (directionsDisplayArr[0]) {
-  //   directionsDisplayArr[0].setMap(null);
-  //   directionsDisplayArr = [];
-
 }
 
 function loadDefault() {
+  // loads results for Seattle by default for first time users to get an idea how the app works
   getCoordinatesFromLocation('Seattle');
 }
 
@@ -354,7 +340,6 @@ function handleLocationSubmit() {
     // clear markers from previous searches
     if (markers[0]) { clearMarkers() };
     // get location text from UI
-
     const location = $('.js-user-input').val();
 
     getCoordinatesFromLocation(location);
