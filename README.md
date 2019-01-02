@@ -13,7 +13,6 @@ Results are returned as a list of sightings that users selectively map and draw 
 Pluma provides guidance to users who aim to view specific species in the field. This function is particularly useful for travelling users with limited time at a given location. Speaking from my own perspective as a birder, it's also simply fun to see what birders in exotic locations are viewing. 
 
 ## Technology
-
 Pluma was built with HTML, CSS/Sass, Javascript, and jQuery
 
 ### APIs
@@ -23,23 +22,23 @@ Google Directions <br>
 
 eBird
 
-## Screenshots
+##Screenshots
 
 ###Landing screen
-<p>Clicking on the feather icon scrolls to directions section.</p>
+Clicking on the feather icon scrolls to directions section.<br>
 ![Landing screen](/screenshots/landing-screen-mobile.png) 
 
 
 ###How-to
-<p> Direction cards provide information on search parameters.</p>
+Direction cards provide information on search parameters.<br>
 ![Directions](/screenshots/directions-desktop.png) <br>
 
 ###Results
-<p>Third result has been mapped and the rendered marker has been clicked on to reveal an informational window with species name, location info and date of sighting.</p>
-![Results](/screenshots/results-desktop.png) <br>
+Third result has been mapped and the rendered marker has been clicked on to reveal an informational window with species name, location info and date of sighting.<br>
+![Results](/screenshots/results-desktop.png)
 
 
 ###Mobile-first design
-<br> A view of the entire app on iPhone 6/7/8 <br>
+A view of the entire app on iPhone 6/7/8
 ![Responsive design](/screenshots/full-page-mobile.png)
 
