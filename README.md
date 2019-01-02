@@ -19,20 +19,27 @@ Pluma was built with HTML, CSS/Sass, Javascript, and jQuery
 ### APIs
 Google Geocoding <br>
 Google JavaScript <br>
-Google Directions <br><br>
+Google Directions <br>
 
 eBird
 
 ## Screenshots
 
-![Landing screen](/screenshots/landing-screen-mobile.png)
-Clicking on the feather icon scrolls to directions section.
+###Landing screen
+<p>Clicking on the feather icon scrolls to directions section.</p>
+![Landing screen](/screenshots/landing-screen-mobile.png) 
 
-![Directions](/screenshots/directions-desktop.png)
-Direction cards provide information on search parameters.
 
-![Results](/screenshots/results-desktop.png)
-Third result has been mapped and the rendered marker has been clicked on to reveal an informational window with species name, location info and date of sighting.
+###How-to
+<p> Direction cards provide information on search parameters.</p>
+![Directions](/screenshots/directions-desktop.png) <br>
 
+###Results
+<p>Third result has been mapped and the rendered marker has been clicked on to reveal an informational window with species name, location info and date of sighting.</p>
+![Results](/screenshots/results-desktop.png) <br>
+
+
+###Mobile-first design
+<br> A view of the entire app on iPhone 6/7/8 <br>
 ![Responsive design](/screenshots/full-page-mobile.png)
-A view of the entire app on iPhone 6/7/8
+
