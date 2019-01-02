@@ -52,8 +52,13 @@ function getDirections(origin, destination) {
 
 
 function handleDirectionsButtonClick() {
+  // draws route from sighting to user location
   $('.results-container').on('click', '.js-directions-button', function (event) {
+
+
     console.log('dir icon clicked')
+
+
     if (directionsDisplayArr[0]) {
       directionsDisplayArr[0].setMap(null);
       directionsDisplayArr = [];
@@ -80,9 +85,7 @@ function handleDirectionsButtonClick() {
 }
 
 function handleMapButtonClick(eBirdData) {
-  console.log('handle map button click')
   $('#js-results-list').unbind('click').on('click', '.js-map-button', function (event) {
-
 
     // data for marker from ebird
     const observationId = this.getAttribute("data-id");
@@ -118,7 +121,6 @@ function handleMapButtonClick(eBirdData) {
           .open(map, marker);
       });
 
-
       markers.push(marker);
       console.log(markers);
 
@@ -142,10 +144,6 @@ function scrollToResults() {
 }
 
 function renderObservationsList(responseJson) {
-  console.log("renderObs run and ebird resp check, ", responseJson);
-  // remove previous results
-  // $('#js-results-list').empty();
-
   // id links marker to item in return list
   let id = 1;
   for (let obs of responseJson) {
@@ -300,8 +298,6 @@ function scrollToBirdSearch() {
 function handleFeatherNav() {
   // scrolls window to directions from top
   $('.js-feather-nav').click(function (event) {
-
-    console.log('feather clicked');
 
     const targetClassArr = event.target.classList;
 
