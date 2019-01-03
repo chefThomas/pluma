@@ -52,9 +52,10 @@ function getDirections(origin, destination) {
 
 
 function handleDirectionsButtonClick() {
-  $('.results-container').on('click', '.js-directions-button', function (event) {
-    console.log('dir icon clicked')
+  $('.results-container').unbind('click').on('click', '.js-directions-button', function (event) {
+
     if (directionsDisplayArr[0]) {
+      console.log();
       directionsDisplayArr[0].setMap(null);
       directionsDisplayArr = [];
     } else {
@@ -64,7 +65,6 @@ function handleDirectionsButtonClick() {
       const destination = { lat: lat, lng: lng };
 
       if (navigator.geolocation) {
-        console.log('in nav.geo')
         navigator.geolocation.getCurrentPosition(function (position) {
           var origin = {
             lat: position.coords.latitude,
@@ -80,7 +80,6 @@ function handleDirectionsButtonClick() {
 }
 
 function handleMapButtonClick(eBirdData) {
-  console.log('handle map button click')
   $('#js-results-list').unbind('click').on('click', '.js-map-button', function (event) {
 
 
@@ -142,10 +141,6 @@ function scrollToResults() {
 }
 
 function renderObservationsList(responseJson) {
-  console.log("renderObs run and ebird resp check, ", responseJson);
-  // remove previous results
-  // $('#js-results-list').empty();
-
   // id links marker to item in return list
   let id = 1;
   for (let obs of responseJson) {
@@ -177,11 +172,7 @@ function generateEbirdRequestUrl(latitude, longitude) {
   const maxResults = $('#max-results').val();
   const userRadiusInput = $('#search-radius').val();
 
-  console.log('max results', maxResults);
-
   let ebirdNearbyUrl = ebirdNearbyUrlBase + `lat=${latitude}&lng=${longitude}`;
-
-
 
   if ((maxResults < 0) || (userRadiusInput < 0)) {
     alert('Try a positive integer. Zero yields defaults (all results within 25km radius).');
@@ -256,7 +247,6 @@ function initMap(center) {
 
 
 function getCoordinatesFromLocation(location) {
-  console.log('get coords run');
   // generate API-friendly url
   const queryParams = `address=${encodeURIComponent(location)}`;
   const searchString = googleGeocodeUrl + queryParams + `&key=${googleApiKey}`;
@@ -266,7 +256,6 @@ function getCoordinatesFromLocation(location) {
     .then(response => response.json())
     .then(json => {
       // pull coordinates from response object
-      console.log('google geocord response json', json);
       if (json.status === "OK") {
         const { lat, lng } = json.results[0].geometry.location;
         // center map on location
@@ -325,7 +314,7 @@ function clearMarkers() {
 }
 
 function loadDefault() {
-  // loads results for Seattle by default for first time users to get an idea how the app works
+  // loads results for Seattle by default so first time users to get an idea how the app works
   getCoordinatesFromLocation('Seattle');
 }
 
@@ -334,11 +323,19 @@ function handleLocationSubmit() {
 
   $('form').on('submit', event => {
 
+    console.log('dir arr location submit', directionsDisplayArr[0]);
     event.preventDefault();
     $('#js-results-list').empty();
 
     // clear markers from previous searches
     if (markers[0]) { clearMarkers() };
+
+    // clear routes
+    if (directionsDisplayArr[0]) {
+      directionsDisplayArr[0].setMap(null);
+      directionsDisplayArr = [];
+    }
+
     // get location text from UI
     const location = $('.js-user-input').val();
 
