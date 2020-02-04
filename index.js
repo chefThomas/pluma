@@ -5,7 +5,7 @@ let markers = [];
 let directionsDisplayArr = [];
 const googleGeocodeUrl = 'https://maps.googleapis.com/maps/api/geocode/json?';
 
-const googleApiKey = 'AIzaSyBRDIHXSysd0XGylReAFLpkZw4FLIwTDGk';
+const googleApiKey = 'AIzaSyAHh3NYFImW4c4ypvPrNrwdGHLP7xU9gMA';
 const ebirdNearbyUrlBase = 'https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&';
 let runScrollToResults = false;
 
