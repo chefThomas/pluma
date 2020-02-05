@@ -4,6 +4,7 @@ let markerZindex = 0;
 let markers = [];
 let directionsDisplayArr = [];
 const googleGeocodeUrl = "https://maps.googleapis.com/maps/api/geocode/json?";
+
 const googleApiKey = "AIzaSyDVx0Obu2xJ6E8SCGESOFbetaVXMKDQwMA";
 const ebirdNearbyUrlBase =
   "https://ebird.org/ws2.0/data/obs/geo/recent?key=3k3ndtikp21v&sort=date&";
@@ -253,20 +254,20 @@ function initMap(center) {
 }
 
 function getCoordinatesFromLocation(location) {
-  // generate API-friendly url
+  // generate API-friendly url with request parameters
   const queryParams = `address=${encodeURIComponent(location)}`;
   const searchString = googleGeocodeUrl + queryParams + `&key=${googleApiKey}`;
-
+  console.log(searchString);
   // google geoclocation api call
   fetch(searchString)
     .then(response => {
       console.log(response);
-      response.json();
+      return response.json();
     })
     .then(json => {
       console.log(json);
       // pull coordinates from response object
-      if (json.status === "ok") {
+      if (json.status === "OK") {
         const { lat, lng } = json.results[0].geometry.location;
         // center map on location
         const mapCenter = { lat: lat, lng: lng };
@@ -322,7 +323,7 @@ function clearMarkers() {
 }
 
 function loadDefault() {
-  // loads results for Seattle by default so first time users to get an idea how the app works
+  // loads results for Seattle by default
   getCoordinatesFromLocation("Seattle");
 }
 
@@ -343,7 +344,7 @@ function handleLocationSubmit() {
       directionsDisplayArr = [];
     }
 
-    // get location text from UI
+    // get location from user
     const location = $(".js-user-input").val();
 
     getCoordinatesFromLocation(location);
